@@ -1,8 +1,8 @@
-import 'Content.dart';
+import 'content.dart';
 import 'package:flutter/cupertino.dart';
 
 class ImageContent extends Content{
-  final Image _image;
+  final Image image;
 
-  ImageContent(this._image);
+  ImageContent(this.image);
 }

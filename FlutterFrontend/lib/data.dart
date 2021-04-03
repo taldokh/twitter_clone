@@ -1,8 +1,8 @@
-import '../lib/models/user.dart';
-import '../lib/models/post.dart';
-import '../lib/models/TextContent.dart';
-import '../lib/models/ImageAndTextContent.dart';
-import '../lib/models/ImageContent.dart';
+import 'models/user.dart';
+import 'models/post.dart';
+import 'models/text_content.dart';
+import 'models/image_and_text_content.dart';
+import 'models/image_content.dart';
 import 'package:flutter/material.dart';
 
 List<User> users = [
@@ -13,7 +13,10 @@ List<User> users = [
       "Mccallum",
       "Benmccall8349@gmail.com",
       "Politician, fighting agains climate change",
-      Image.asset("./images/randomPerson1.jpg"),
+      Image.asset(
+        "assets/images/randomPerson1.jpg",
+        height: 100,
+      ),
       [2],
       [2, 3],
       []),
@@ -24,12 +27,27 @@ List<User> users = [
       "Alvarado",
       "mawicah179124@gmail.com",
       "Paleontologist, Live in new york",
-      Image.asset("./images/randomPerson2.jpg"),
+      Image.asset(
+        "assets/images/randomPerson2.jpg",
+        height: 100,
+      ),
       [1, 3],
       [1, 3],
       []),
-  User(3, "AnnMan", "Annabelle", "Manning", "Annman3213@gmail.com", "",
-      Image.asset("./images/randomPerson3.jpg"), [1, 2], [2], []),
+  User(
+      3,
+      "AnnMan",
+      "Annabelle",
+      "Manning",
+      "Annman3213@gmail.com",
+      "",
+      Image.asset(
+        "assets/images/randomPerson3.jpg",
+        height: 100,
+      ),
+      [1, 2],
+      [2],
+      []),
 ];
 
 List<Post> posts = [
@@ -43,15 +61,15 @@ List<Post> posts = [
   Post(
       2,
       3,
-      ImageAndTextContent(Image.asset('../assets/images/postImage1.jpg'),
-          'anim id est laborum.'),
+      ImageAndTextContent(
+          Image.asset('assets/images/postImage1.jpg'), 'anim id est laborum.'),
       [1, 3],
       DateTime(2017)),
   Post(
       3,
       1,
       ImageAndTextContent(
-          Image.asset('../assets/images/postImage2.jpg'), 'yammi...'),
+          Image.asset('assets/images/postImage2.jpg'), 'yammi...'),
       [1, 3],
       DateTime(2017)),
   Post(
@@ -61,6 +79,6 @@ List<Post> posts = [
           'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
       [1, 3],
       DateTime(2017)),
-  Post(5, 3, ImageContent(Image.asset('../assets/images/postImage3.jpg')),
-      [1, 3], DateTime(2017)),
+  Post(5, 3, ImageContent(Image.asset('assets/images/postImage3.jpg')), [1, 3],
+      DateTime(2017)),
 ];
