@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+// data object model that holds all the information related to a user
 class User {
   final int id;
   final String userName;

@@ -5,6 +5,7 @@ import './models/content.dart';
 import 'package:flutter/material.dart';
 import './models/fetched_post.dart';
 
+// a widget that determines 
 class UserPost extends StatelessWidget {
   final FetchedPost _fetchedPost;
 
@@ -26,9 +27,10 @@ class UserPost extends StatelessWidget {
   }
 }
 
+// returns a widget based on the post content type.
+// by comparing the runtimetype of the content object with the exact content classes
 Widget contentType(Content content) {
   Widget contentWidget;
-  print(content.runtimeType);
   if (content.runtimeType == TextContent) {
     TextContent textContent = content;
     contentWidget = Text(textContent.text);
@@ -51,8 +53,6 @@ Widget contentType(Content content) {
             child: imageAndTextContent.image)
       ],
     );
-  } else {
-    print('error');
-  }
+  } else {}
   return contentWidget;
 }

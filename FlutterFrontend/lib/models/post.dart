@@ -1,5 +1,6 @@
 import 'content.dart';
 
+// data object model that holds all the information related to a post
 class Post {
   final int _postId;
   final int userId;

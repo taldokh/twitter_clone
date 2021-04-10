@@ -18,8 +18,8 @@ class App extends StatelessWidget {
   }
 }
 
+
 List<UserPost> fetchPosts() {
-  print(posts.last.content.runtimeType.hashCode);
   return posts
       .map((post) => UserPost(FetchedPost(
           userImageById(post.userId), userNameById(post.userId), post.content)))
