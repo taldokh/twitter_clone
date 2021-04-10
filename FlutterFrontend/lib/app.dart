@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './user_post.dart';
+import 'widgets/user_post.dart';
 import './data.dart';
 import './models/fetched_post.dart';
 import './screens/home.dart';

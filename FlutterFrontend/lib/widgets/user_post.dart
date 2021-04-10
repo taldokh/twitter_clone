@@ -1,9 +1,9 @@
 import 'package:FlutterFrontend/models/image_and_text_content.dart';
 import 'package:FlutterFrontend/models/image_content.dart';
 import 'package:FlutterFrontend/models/text_content.dart';
-import './models/content.dart';
+import '../models/content.dart';
 import 'package:flutter/material.dart';
-import './models/fetched_post.dart';
+import '../models/fetched_post.dart';
 
 // a widget that determines 
 class UserPost extends StatelessWidget {

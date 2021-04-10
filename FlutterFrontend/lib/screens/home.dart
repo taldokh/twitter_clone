@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../data.dart';
-import '../user_post.dart';
+import '../widgets/user_post.dart';
 import '../models/fetched_post.dart';
 
 class Home extends StatelessWidget {
