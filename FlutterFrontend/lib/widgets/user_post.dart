@@ -17,7 +17,8 @@ class UserPost extends StatelessWidget {
       child: Column(
         children: [
           Row(children: [
-            this._fetchedPost.userImage,
+            CircleAvatar(
+            backgroundImage: this._fetchedPost.userImage.image,),
             Text(this._fetchedPost.userName),
           ]),
           contentType(this._fetchedPost.content)
