@@ -10,13 +10,15 @@ import './user_avatar.dart';
 // a widget that determines
 class UserPost extends StatelessWidget {
   final FetchedPost _fetchedPost;
+  static const double _PostVerticalMargin = 10;
+  static const double _ContentVerticalMargin = 5;
 
   UserPost(this._fetchedPost);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: EdgeInsets.symmetric(vertical: _PostVerticalMargin),
       child: Column(
         children: [
           Row(children: [
@@ -28,7 +30,7 @@ class UserPost extends StatelessWidget {
             )),
           ]),
           Container(
-              margin: EdgeInsets.symmetric(vertical: 5),
+              margin: EdgeInsets.symmetric(vertical: _ContentVerticalMargin),
               child: contentType(this._fetchedPost.content))
         ],
       ),
