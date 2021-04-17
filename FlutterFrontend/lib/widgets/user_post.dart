@@ -27,7 +27,9 @@ class UserPost extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold),
             )),
           ]),
-          contentType(this._fetchedPost.content)
+          Container(
+              margin: EdgeInsets.symmetric(vertical: 5),
+              child: contentType(this._fetchedPost.content))
         ],
       ),
     );

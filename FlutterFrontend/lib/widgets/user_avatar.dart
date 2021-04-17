@@ -11,8 +11,9 @@ class UserAvatar extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10),
       child: CircleAvatar(
-        radius: 25,
-        backgroundImage: this._imageProvider,
+        radius: 26,
+        backgroundColor: Colors.black,
+        child: CircleAvatar(radius: 25, backgroundImage: this._imageProvider),
       ),
     );
   }
