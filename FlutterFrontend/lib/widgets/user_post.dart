@@ -22,8 +22,10 @@ class UserPost extends StatelessWidget {
           Row(children: [
             UserAvatar(this._fetchedPost.userImage.image),
             Container(
-                margin: EdgeInsets.symmetric(horizontal: 5),
-                child: Text(this._fetchedPost.userName)),
+                child: Text(
+              this._fetchedPost.userName,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )),
           ]),
           contentType(this._fetchedPost.content)
         ],
