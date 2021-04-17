@@ -5,7 +5,7 @@ import '../models/content.dart';
 import 'package:flutter/material.dart';
 import '../models/fetched_post.dart';
 
-// a widget that determines 
+// a widget that determines
 class UserPost extends StatelessWidget {
   final FetchedPost _fetchedPost;
 
@@ -14,12 +14,19 @@ class UserPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
         children: [
           Row(children: [
-            CircleAvatar(
-            backgroundImage: this._fetchedPost.userImage.image,),
-            Text(this._fetchedPost.userName),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              child: CircleAvatar(
+                backgroundImage: this._fetchedPost.userImage.image,
+              ),
+            ),
+            Container(
+                margin: EdgeInsets.symmetric(horizontal: 5),
+                child: Text(this._fetchedPost.userName)),
           ]),
           contentType(this._fetchedPost.content)
         ],
@@ -34,24 +41,22 @@ Widget contentType(Content content) {
   Widget contentWidget;
   if (content.runtimeType == TextContent) {
     TextContent textContent = content;
-    contentWidget = Text(textContent.text);
+    contentWidget = Container(
+        margin: EdgeInsets.symmetric(horizontal: 10),
+        child: Text(textContent.text));
   } else if (content.runtimeType == ImageContent) {
     ImageContent imageContent = content;
     contentWidget = Container(
-        constraints: BoxConstraints.expand(
-          height: 200,
-        ),
-        child: imageContent.image);
+        child: FittedBox(child: imageContent.image, fit: BoxFit.fill));
   } else if (content.runtimeType == ImageAndTextContent) {
     ImageAndTextContent imageAndTextContent = content;
     contentWidget = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(imageAndTextContent.text),
         Container(
-            constraints: BoxConstraints.expand(
-              height: 200,
-            ),
-            child: imageAndTextContent.image)
+            margin: EdgeInsets.symmetric(horizontal: 10),
+            child: Text(imageAndTextContent.text)),
+        Container(child: imageAndTextContent.image)
       ],
     );
   } else {}
