@@ -4,6 +4,7 @@ import 'package:FlutterFrontend/models/text_content.dart';
 import '../models/content.dart';
 import 'package:flutter/material.dart';
 import '../models/fetched_post.dart';
+import './post_text.dart';
 
 // a widget that determines
 class UserPost extends StatelessWidget {
@@ -21,6 +22,7 @@ class UserPost extends StatelessWidget {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
               child: CircleAvatar(
+                radius: 25,
                 backgroundImage: this._fetchedPost.userImage.image,
               ),
             ),
@@ -41,9 +43,7 @@ Widget contentType(Content content) {
   Widget contentWidget;
   if (content.runtimeType == TextContent) {
     TextContent textContent = content;
-    contentWidget = Container(
-        margin: EdgeInsets.symmetric(horizontal: 10),
-        child: Text(textContent.text));
+    contentWidget = PostText(textContent.text);
   } else if (content.runtimeType == ImageContent) {
     ImageContent imageContent = content;
     contentWidget = Container(
@@ -53,9 +53,7 @@ Widget contentType(Content content) {
     contentWidget = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-            margin: EdgeInsets.symmetric(horizontal: 10),
-            child: Text(imageAndTextContent.text)),
+        PostText(imageAndTextContent.text),
         Container(child: imageAndTextContent.image)
       ],
     );
