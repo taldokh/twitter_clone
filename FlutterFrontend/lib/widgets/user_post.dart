@@ -5,6 +5,7 @@ import '../models/content.dart';
 import 'package:flutter/material.dart';
 import '../models/fetched_post.dart';
 import './post_text.dart';
+import './user_avatar.dart';
 
 // a widget that determines
 class UserPost extends StatelessWidget {
@@ -19,13 +20,7 @@ class UserPost extends StatelessWidget {
       child: Column(
         children: [
           Row(children: [
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              child: CircleAvatar(
-                radius: 25,
-                backgroundImage: this._fetchedPost.userImage.image,
-              ),
-            ),
+            UserAvatar(this._fetchedPost.userImage.image),
             Container(
                 margin: EdgeInsets.symmetric(horizontal: 5),
                 child: Text(this._fetchedPost.userName)),
