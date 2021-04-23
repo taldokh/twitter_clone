@@ -28,7 +28,8 @@ class UserProfile extends StatelessWidget {
                   radius: 50,
                   backgroundImage: this._user.imagePath.image,
                 ),
-              )
+              ),
+              Column(children: [..._fetchPosts()])
             ],
           ),
         ),
@@ -38,5 +39,21 @@ class UserProfile extends StatelessWidget {
 
   User _fetchUser(int userID) {
     return users.singleWhere((user) => user.id == userID);
+  }
+
+  List<UserPost> _fetchPosts() {
+    return posts
+        .where((post) => post.userId == this._user.id)
+        .map((post) => UserPost(FetchedPost(_userImageById(post.userId),
+            _userNameById(post.userId), post.content)))
+        .toList();
+  }
+
+  Image _userImageById(int userId) {
+    return users.firstWhere((user) => user.id == userId).imagePath;
+  }
+
+  String _userNameById(int userId) {
+    return users.firstWhere((user) => user.id == userId).userName;
   }
 }
