@@ -26,10 +26,10 @@ class UserProfile extends StatelessWidget {
                 margin: EdgeInsets.all(20),
                 child: CircleAvatar(
                   radius: 50,
-                  backgroundImage: this._user.imagePath.image,
+                  backgroundImage: this._user.profileImage.image,
                 ),
               ),
-              Text(this._user.about),
+              Text(this._user.bio),
               Column(children: [..._fetchPosts()])
             ],
           ),
@@ -51,7 +51,7 @@ class UserProfile extends StatelessWidget {
   }
 
   Image _userImageById(int userId) {
-    return users.firstWhere((user) => user.id == userId).imagePath;
+    return users.firstWhere((user) => user.id == userId).profileImage;
   }
 
   String _userNameById(int userId) {

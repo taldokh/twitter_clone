@@ -23,7 +23,7 @@ List<UserPost> _fetchPosts() {
 }
 
 Image _userImageById(int userId) {
-  return users.firstWhere((user) => user.id == userId).imagePath;
+  return users.firstWhere((user) => user.id == userId).profileImage;
 }
 
 String _userNameById(int userId) {
