@@ -17,14 +17,22 @@ class UserProfile extends StatelessWidget {
         title: Text('User Profile'),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: this._user.imagePath.image,
-            )
-          ],
+        child: Align(
+          alignment: Alignment.center,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                margin: EdgeInsets.all(20),
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: this._user.imagePath.image,
+                ),
+              ),
+              Text(this._user.about),
+              Column(children: [..._fetchPosts()])
+            ],
+          ),
         ),
       ),
     );
@@ -32,5 +40,21 @@ class UserProfile extends StatelessWidget {
 
   User _fetchUser(int userID) {
     return users.singleWhere((user) => user.id == userID);
+  }
+
+  List<UserPost> _fetchPosts() {
+    return posts
+        .where((post) => post.userId == this._user.id)
+        .map((post) => UserPost(FetchedPost(_userImageById(post.userId),
+            _userNameById(post.userId), post.content)))
+        .toList();
+  }
+
+  Image _userImageById(int userId) {
+    return users.firstWhere((user) => user.id == userId).imagePath;
+  }
+
+  String _userNameById(int userId) {
+    return users.firstWhere((user) => user.id == userId).userName;
   }
 }
