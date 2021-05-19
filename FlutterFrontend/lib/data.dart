@@ -1,6 +1,5 @@
 import 'models/user.dart';
 import 'models/post.dart';
-import 'models/comment.dart';
 import 'models/text_content.dart';
 import 'models/image_and_text_content.dart';
 import 'models/image_content.dart';

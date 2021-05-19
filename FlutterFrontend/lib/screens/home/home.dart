@@ -8,9 +8,19 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        backgroundColor: Colors.white,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset(
+              'assets/images/twitterLogo.jpg',
+              fit: BoxFit.cover,
+              height: 35.0,
+            ),
+          ],
+        ),
       ),
-      body: SingleChildScrollView(child: Column(children: [..._fetchPosts()])),
+      body: ListView(children: [..._fetchPosts()]),
     );
   }
 }
