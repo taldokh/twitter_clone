@@ -19,19 +19,26 @@ class UserPost extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: _PostVerticalMargin),
-      child: Column(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(children: [
-            UserAvatar(this._fetchedPost.userImage.image),
-            Container(
-                child: Text(
-              this._fetchedPost.userName,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            )),
-          ]),
-          Container(
-              margin: EdgeInsets.symmetric(vertical: _ContentVerticalMargin),
-              child: contentType(this._fetchedPost.content))
+          UserAvatar(this._fetchedPost.userImage.image),
+          Flexible(
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                      child: Text(
+                    this._fetchedPost.userName,
+                    overflow: TextOverflow.clip,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )),
+                  Container(child: contentType(this._fetchedPost.content))
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
@@ -48,14 +55,33 @@ Widget contentType(Content content) {
   } else if (content.runtimeType == ImageContent) {
     ImageContent imageContent = content;
     contentWidget = Container(
-        child: FittedBox(child: imageContent.image, fit: BoxFit.fill));
+      height: 200.0,
+      width: 400.0,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: imageContent.image.image,
+          fit: BoxFit.fill,
+        ),
+        shape: BoxShape.rectangle,
+      ),
+    );
   } else if (content.runtimeType == ImageAndTextContent) {
     ImageAndTextContent imageAndTextContent = content;
     contentWidget = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         PostText(imageAndTextContent.text),
-        Container(child: imageAndTextContent.image)
+        Container(
+          height: 200.0,
+          width: 400.0,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: imageAndTextContent.image.image,
+              fit: BoxFit.fill,
+            ),
+            shape: BoxShape.rectangle,
+          ),
+        )
       ],
     );
   } else {}

@@ -60,7 +60,10 @@ List<Post> posts = [
       2,
       3,
       ImageAndTextContent(
-          Image.asset('assets/images/postImage1.jpg'), 'anim id est laborum.'),
+          Image.asset(
+            'assets/images/postImage1.jpg',
+          ),
+          'anim id est laborum.'),
       [1, 3],
       List.empty(),
       DateTime(2017)),
@@ -68,7 +71,11 @@ List<Post> posts = [
       3,
       1,
       ImageAndTextContent(
-          Image.asset('assets/images/postImage2.jpg'), 'yammi...'),
+          Image.asset(
+            'assets/images/postImage2.jpg',
+            fit: BoxFit.fill,
+          ),
+          'yammi...'),
       [1, 3],
       List.empty(),
       DateTime(2017)),
@@ -80,6 +87,13 @@ List<Post> posts = [
       [1, 3],
       List.empty(),
       DateTime(2017)),
-  Post(5, 3, ImageContent(Image.asset('assets/images/postImage3.jpg')), [1, 3],
-      List.empty(), DateTime(2017)),
+  Post(
+      5,
+      3,
+      ImageContent(Image.asset(
+        'assets/images/postImage3.jpg',
+      )),
+      [1, 3],
+      List.empty(),
+      DateTime(2017)),
 ];
