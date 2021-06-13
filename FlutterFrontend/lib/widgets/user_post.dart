@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../models/fetched_post.dart';
 import './post_text.dart';
 import './user_avatar.dart';
+import './post_image.dart';
 
 // a widget that determines
 class UserPost extends StatelessWidget {
@@ -18,13 +19,14 @@ class UserPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: _PostVerticalMargin),
+      margin: EdgeInsets.all(_PostVerticalMargin),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           UserAvatar(this._fetchedPost.userImage.image),
           Flexible(
             child: Container(
+              margin: EdgeInsets.only(left: 5),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -34,7 +36,9 @@ class UserPost extends StatelessWidget {
                     overflow: TextOverflow.clip,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   )),
-                  Container(child: contentType(this._fetchedPost.content))
+                  Container(
+                      margin: EdgeInsets.only(top: 5),
+                      child: contentType(this._fetchedPost.content))
                 ],
               ),
             ),
@@ -54,34 +58,16 @@ Widget contentType(Content content) {
     contentWidget = PostText(textContent.text);
   } else if (content.runtimeType == ImageContent) {
     ImageContent imageContent = content;
-    contentWidget = Container(
-      height: 200.0,
-      width: 400.0,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: imageContent.image.image,
-          fit: BoxFit.fill,
-        ),
-        shape: BoxShape.rectangle,
-      ),
-    );
+    contentWidget = PostImage(imageContent.image.image);
   } else if (content.runtimeType == ImageAndTextContent) {
     ImageAndTextContent imageAndTextContent = content;
     contentWidget = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        PostText(imageAndTextContent.text),
         Container(
-          height: 200.0,
-          width: 400.0,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: imageAndTextContent.image.image,
-              fit: BoxFit.fill,
-            ),
-            shape: BoxShape.rectangle,
-          ),
-        )
+            margin: EdgeInsets.only(bottom: 5),
+            child: PostText(imageAndTextContent.text)),
+        PostImage(imageAndTextContent.image.image)
       ],
     );
   } else {}
