@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 // data object model that holds all the information related to a user
 class User {
   final int _id;
-  final String _userName;
   final String _name;
+  final String _handle;
   final String _email;
   final String _bio;
   final Image _profileImage;
@@ -12,20 +12,12 @@ class User {
   final List<int> _following;
   final List<int> _posts;
 
-  User(
-      this._id,
-      this._userName,
-      this._name,
-      this._email,
-      this._bio,
-      this._profileImage,
-      this._followers,
-      this._following,
-      this._posts);
+  User(this._id, this._name, this._handle, this._email, this._bio,
+      this._profileImage, this._followers, this._following, this._posts);
 
   int get id => this._id;
 
-  String get userName => this._userName;
+  String get handle => this._handle;
 
   String get name => this._name;
 
