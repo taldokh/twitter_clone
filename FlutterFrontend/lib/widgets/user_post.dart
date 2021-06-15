@@ -13,7 +13,7 @@ import './post_header.dart';
 // a widget that determines
 class UserPost extends StatelessWidget {
   final FetchedPost _fetchedPost;
-  static const double _PostVerticalMargin = 11;
+  static const double _PostMargin = 11;
   static const double _AvatarRightPadding = 11;
 
   UserPost(this._fetchedPost);
@@ -23,7 +23,7 @@ class UserPost extends StatelessWidget {
     return Column(children: [
       Divider(),
       Container(
-        margin: EdgeInsets.all(_PostVerticalMargin),
+        margin: EdgeInsets.all(_PostMargin),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
