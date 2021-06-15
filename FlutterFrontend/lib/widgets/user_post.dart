@@ -13,6 +13,7 @@ class UserPost extends StatelessWidget {
   final FetchedPost _fetchedPost;
   static const double _PostVerticalMargin = 10;
   static const double _ContentVerticalMargin = 5;
+  static const String _AtSymbol = '@';
 
   UserPost(this._fetchedPost);
 
@@ -30,12 +31,21 @@ class UserPost extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                      child: Text(
-                    this._fetchedPost.userName,
-                    overflow: TextOverflow.clip,
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  )),
+                  Row(
+                    children: [
+                      Text(
+                        this._fetchedPost.name,
+                        overflow: TextOverflow.clip,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(' '),
+                      Text(
+                        _AtSymbol + this._fetchedPost.handle,
+                        overflow: TextOverflow.clip,
+                        style: TextStyle(color: Color(0xFF5B7083)),
+                      ),
+                    ],
+                  ),
                   Container(
                       margin: EdgeInsets.only(top: 5),
                       child: contentType(this._fetchedPost.content))

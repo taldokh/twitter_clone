@@ -27,8 +27,12 @@ class Home extends StatelessWidget {
 
 List<UserPost> _fetchPosts() {
   return posts
-      .map((post) => UserPost(FetchedPost(_userImageById(post.userId),
-          _userNameById(post.userId), post.content)))
+      .map((post) => UserPost(FetchedPost(
+          _userImageById(post.userId),
+          _userNameById(post.userId),
+          _userHandleById(post.userId),
+          post.uploadTime,
+          post.content)))
       .toList();
 }
 
@@ -36,6 +40,10 @@ Image _userImageById(int userId) {
   return users.firstWhere((user) => user.id == userId).profileImage;
 }
 
+String _userHandleById(int userId) {
+  return users.firstWhere((user) => user.id == userId).handle;
+}
+
 String _userNameById(int userId) {
-  return users.firstWhere((user) => user.id == userId).userName;
+  return users.firstWhere((user) => user.id == userId).name;
 }
