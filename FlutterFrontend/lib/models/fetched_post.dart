@@ -6,7 +6,7 @@ class FetchedPost {
   final Image _userImage;
   final String _name;
   final String _handle;
-  final DateTime _uploadTime;
+  final String _uploadTime;
   final Content _content;
 
   FetchedPost(this._userImage, this._name, this._handle, this._uploadTime,
@@ -18,7 +18,7 @@ class FetchedPost {
 
   String get handle => this._handle;
 
-  DateTime get uploadTime => this._uploadTime;
+  String get uploadTime => this._uploadTime;
 
   Content get content => this._content;
 }

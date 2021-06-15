@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 List<User> users = [
   User(
       1,
-      "Benmcc",
       "Ben Mccallum",
+      "Benmcc",
       "Benmccall8349@gmail.com",
       "Politician, fighting agains climate change",
       Image.asset(
@@ -21,8 +21,8 @@ List<User> users = [
       []),
   User(
       2,
-      "Leyton_alv12",
       "Lleyton Alvarado",
+      "Leyton_alv12",
       "mawicah179124@gmail.com",
       "Paleontologist, Live in new york",
       Image.asset(
@@ -34,8 +34,8 @@ List<User> users = [
       []),
   User(
       3,
-      "AnnMan",
       "Annabelle Manning",
+      "AnnMan",
       "Annman3213@gmail.com",
       "",
       Image.asset(
@@ -55,7 +55,7 @@ List<Post> posts = [
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
       [1, 3],
       List.empty(),
-      DateTime(2017)),
+      '17h'),
   Post(
       2,
       3,
@@ -66,7 +66,7 @@ List<Post> posts = [
           'anim id est laborum.'),
       [1, 3],
       List.empty(),
-      DateTime(2017)),
+      '22h'),
   Post(
       3,
       1,
@@ -78,7 +78,7 @@ List<Post> posts = [
           'yammi...'),
       [1, 3],
       List.empty(),
-      DateTime(2017)),
+      'Jun 1'),
   Post(
       4,
       2,
@@ -86,7 +86,7 @@ List<Post> posts = [
           'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
       [1, 3],
       List.empty(),
-      DateTime(2017)),
+      'May 20'),
   Post(
       5,
       3,
@@ -95,5 +95,5 @@ List<Post> posts = [
       )),
       [1, 3],
       List.empty(),
-      DateTime(2017)),
+      'Apr 8'),
 ];

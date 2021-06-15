@@ -14,10 +14,7 @@ class UserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CircleAvatar(
-          radius: this._avatarCircleRadius,
-          backgroundImage: this._imageProvider),
-    );
+    return CircleAvatar(
+        radius: this._avatarCircleRadius, backgroundImage: this._imageProvider);
   }
 }
