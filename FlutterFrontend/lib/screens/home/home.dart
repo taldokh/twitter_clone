@@ -37,7 +37,7 @@ List<UserPost> _fetchPosts() {
 }
 
 Image _userImageById(int userId) {
-  return users.firstWhere((user) => user.id == userId).profileImage;
+  return users.firstWhere((user) => user.id == userId).photo;
 }
 
 String _userHandleById(int userId) {

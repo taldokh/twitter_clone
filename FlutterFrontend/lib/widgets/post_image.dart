@@ -16,7 +16,7 @@ class PostImage extends StatelessWidget {
           image: this._imageProvider,
           fit: BoxFit.cover,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(PostImage._imageRadius)),
+        borderRadius: BorderRadius.all(Radius.circular(_imageRadius)),
         shape: BoxShape.rectangle,
       ),
     );

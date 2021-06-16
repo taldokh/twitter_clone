@@ -30,30 +30,77 @@ class UserProfile extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Container(
-                  color: Colors.blue,
-                  height: 120,
-                ),
-                Positioned(
-                  bottom: -(_AvatarRadius * 1.2),
-                  left: 11,
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: _AvatarRadius + 3,
-                    child: UserAvatar(
-                      this._user.profileImage.image,
-                      avatarCircleRadius: _AvatarRadius,
+            Container(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, _AvatarRadius * 1.2),
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      image: DecorationImage(
+                        image: this._user.headerPhoto.image,
+                        fit: BoxFit.cover,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),
+                    height: 120,
+                  ),
+                  Positioned(
+                    bottom: -(_AvatarRadius * 1.2),
+                    left: 11,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: _AvatarRadius + 3,
+                      child: UserAvatar(
+                        this._user.photo.image,
+                        avatarCircleRadius: _AvatarRadius,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-            Text(this._user.bio),
+            Container(
+              height: 100,
+              margin: EdgeInsets.fromLTRB(11, 0, 0, 0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 50,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          this._user.name,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w900, fontSize: 20),
+                        ),
+                        Text('@' + this._user.handle,
+                            style: TextStyle(color: Color(0xFF5B7083))),
+                      ],
+                    ),
+                  ),
+                  Text("Joined " + this._user.joinDate),
+                  Row(
+                    children: [
+                      Container(
+                          child: Text(this._user.followingCount.toString() +
+                              " Following")),
+                      Container(
+                          margin: EdgeInsets.symmetric(horizontal: 11),
+                          child: Text(this._user.followersCount.toString() +
+                              " Followers"))
+                    ],
+                  )
+                ],
+              ),
+            ),
             Column(children: [..._fetchPosts()])
           ],
         ),
@@ -78,7 +125,7 @@ class UserProfile extends StatelessWidget {
   }
 
   Image _userImageById(int userId) {
-    return users.firstWhere((user) => user.id == userId).profileImage;
+    return users.firstWhere((user) => user.id == userId).photo;
   }
 
   String _userHandleById(int userId) {

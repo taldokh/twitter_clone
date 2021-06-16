@@ -18,19 +18,21 @@ class PostHeader extends StatelessWidget {
       children: [
         Text(
           this._name,
-          overflow: TextOverflow.clip,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         Text(' '),
-        Text(
-          _AtSymbol + this._handle,
-          overflow: TextOverflow.clip,
-          style: TextStyle(color: Color(_HandleCOlor)),
+        Flexible(
+          child: Text(
+            _AtSymbol + this._handle,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(color: Color(_HandleCOlor)),
+          ),
         ),
         Text(_UploadTimeSeperator),
         Text(
           this._uploadTime,
-          overflow: TextOverflow.clip,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(color: Color(_UploadTimeCOlor)),
         ),
       ],
