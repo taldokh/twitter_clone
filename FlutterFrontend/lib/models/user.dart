@@ -7,13 +7,29 @@ class User {
   final String _handle;
   final String _email;
   final String _bio;
-  final Image _profileImage;
+  final Image _photo;
+  final Image _headerPhoto;
   final List<int> _followers;
   final List<int> _following;
   final List<int> _posts;
+  final String _joinDate;
+  final String _followersCount;
+  final String _followingCount;
 
-  User(this._id, this._name, this._handle, this._email, this._bio,
-      this._profileImage, this._followers, this._following, this._posts);
+  User(
+      this._id,
+      this._name,
+      this._handle,
+      this._email,
+      this._bio,
+      this._photo,
+      this._headerPhoto,
+      this._followers,
+      this._following,
+      this._posts,
+      this._joinDate,
+      this._followersCount,
+      this._followingCount);
 
   int get id => this._id;
 
@@ -25,11 +41,19 @@ class User {
 
   String get bio => this._bio;
 
-  Image get profileImage => this._profileImage;
+  Image get photo => this._photo;
+
+  Image get headerPhoto => this._headerPhoto;
 
   List<int> get followers => this._followers;
 
   List<int> get following => this._following;
 
   List<int> get posts => this._posts;
+
+  String get joinDate => this._joinDate;
+
+  String get followersCount => this._followersCount;
+
+  String get followingCount => this._followingCount;
 }

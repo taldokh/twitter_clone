@@ -2,24 +2,13 @@ import 'package:flutter/material.dart';
 import '../../data.dart';
 import '../../widgets/user_post.dart';
 import '../../models/fetched_post.dart';
+import './../../widgets/twitter_app_bar.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset(
-              'assets/images/twitterLogo.jpg',
-              fit: BoxFit.cover,
-              height: 35.0,
-            ),
-          ],
-        ),
-      ),
+      appBar: AppBar(backgroundColor: Colors.white, title: TwitterAppBar()),
       body: ListView(children: [..._fetchPosts()]),
     );
   }
@@ -37,7 +26,7 @@ List<UserPost> _fetchPosts() {
 }
 
 Image _userImageById(int userId) {
-  return users.firstWhere((user) => user.id == userId).profileImage;
+  return users.firstWhere((user) => user.id == userId).photo;
 }
 
 String _userHandleById(int userId) {
