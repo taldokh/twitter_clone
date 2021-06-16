@@ -13,8 +13,8 @@ class User {
   final List<int> _following;
   final List<int> _posts;
   final String _joinDate;
-  final int _followersCount;
-  final int _followingCount;
+  final String _followersCount;
+  final String _followingCount;
 
   User(
       this._id,
@@ -53,7 +53,7 @@ class User {
 
   String get joinDate => this._joinDate;
 
-  int get followersCount => this._followersCount;
+  String get followersCount => this._followersCount;
 
-  int get followingCount => this._followingCount;
+  String get followingCount => this._followingCount;
 }

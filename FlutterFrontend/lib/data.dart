@@ -20,8 +20,8 @@ List<User> users = [
       [2, 3],
       [3],
       "February 2011",
-      1,
-      2),
+      '1',
+      '2'),
   User(
       2,
       "Jimmy Kimmel Live",
@@ -36,8 +36,8 @@ List<User> users = [
       [1, 3],
       [1, 4],
       "April 2009",
-      2,
-      2),
+      '2',
+      '2'),
   User(
       3,
       "Gal Gadot",
@@ -52,8 +52,8 @@ List<User> users = [
       [2],
       [2, 5],
       "April 2009",
-      2,
-      1),
+      '2',
+      '1'),
 ];
 
 List<Post> posts = [

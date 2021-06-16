@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import './handle.dart';
 
 class PostHeader extends StatelessWidget {
   final String _name;
@@ -22,13 +23,7 @@ class PostHeader extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         Text(' '),
-        Flexible(
-          child: Text(
-            _AtSymbol + this._handle,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(color: Color(_HandleCOlor)),
-          ),
-        ),
+        Handle(this._handle),
         Text(_UploadTimeSeperator),
         Text(
           this._uploadTime,

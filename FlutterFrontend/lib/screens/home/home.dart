@@ -2,24 +2,13 @@ import 'package:flutter/material.dart';
 import '../../data.dart';
 import '../../widgets/user_post.dart';
 import '../../models/fetched_post.dart';
+import './../../widgets/twitter_app_bar.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset(
-              'assets/images/twitterLogo.jpg',
-              fit: BoxFit.cover,
-              height: 35.0,
-            ),
-          ],
-        ),
-      ),
+      appBar: AppBar(backgroundColor: Colors.white, title: TwitterAppBar()),
       body: ListView(children: [..._fetchPosts()]),
     );
   }
