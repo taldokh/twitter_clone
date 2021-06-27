@@ -1,6 +1,7 @@
+import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart';
 
-class SessionState {
-
+class SessionState extends ChangeNotifier {
   int _userID = 1;
 
   int get userID => this._userID;
