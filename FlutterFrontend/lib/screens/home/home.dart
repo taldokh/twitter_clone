@@ -16,12 +16,15 @@ class Home extends StatelessWidget {
 
 List<UserPost> _fetchPosts() {
   return posts
-      .map((post) => UserPost(FetchedPost(
-          _userImageById(post.userId),
-          _userNameById(post.userId),
-          _userHandleById(post.userId),
-          post.uploadTime,
-          post.content)))
+      .map((post) => UserPost(
+            FetchedPost(
+                _userImageById(post.userId),
+                _userNameById(post.userId),
+                _userHandleById(post.userId),
+                post.uploadTime,
+                post.content,
+                post.userId),
+          ))
       .toList();
 }
 

@@ -9,6 +9,7 @@ import './post_text.dart';
 import './user_avatar.dart';
 import './post_image.dart';
 import './post_header.dart';
+import '../navigation/routes.dart';
 
 // a widget that determines
 class UserPost extends StatelessWidget {
@@ -29,14 +30,22 @@ class UserPost extends StatelessWidget {
           children: [
             Container(
                 margin: EdgeInsets.only(right: _AvatarRightPadding),
-                child: UserAvatar(this._fetchedPost.userImage.image)),
+                child: GestureDetector(
+                    onTap: () =>
+                        _onProfileTap(context, this._fetchedPost.userID),
+                    child: UserAvatar(this._fetchedPost.userImage.image))),
             Flexible(
               child: Container(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    PostHeader(this._fetchedPost.name, this._fetchedPost.handle,
-                        this._fetchedPost.uploadTime),
+                    Container(
+                      child: PostHeader(
+                          this._fetchedPost.name,
+                          this._fetchedPost.handle,
+                          this._fetchedPost.uploadTime,
+                          this._fetchedPost.userID),
+                    ),
                     Container(
                         margin: EdgeInsets.only(top: 5),
                         child: this._contentType(this._fetchedPost.content))
@@ -48,6 +57,10 @@ class UserPost extends StatelessWidget {
         ),
       ),
     ]);
+  }
+
+  _onProfileTap(BuildContext context, int userID) {
+    Navigator.pushNamed(context, ProfileRoute, arguments: {'userID': userID});
   }
 
   // returns a widget based on the post content type.

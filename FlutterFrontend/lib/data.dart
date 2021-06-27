@@ -5,6 +5,8 @@ import 'models/image_and_text_content.dart';
 import 'models/image_content.dart';
 import 'package:flutter/material.dart';
 
+const int loggedInUser = 1;
+
 List<User> users = [
   User(
       1,
