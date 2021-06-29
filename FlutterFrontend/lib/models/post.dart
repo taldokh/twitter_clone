@@ -7,7 +7,7 @@ class Post {
   final Content _content;
   final List<int> _likes;
   final List<Comment> _comments;
-  final DateTime _uploadTime;
+  final String _uploadTime;
 
   Post(
       this._postId, this._userId, this._content, this._likes, this._comments, this._uploadTime);
@@ -22,5 +22,5 @@ class Post {
 
   List<Comment> get comments => this._comments;
 
-  DateTime get uploadTime => this._uploadTime;
+  String get uploadTime => this._uploadTime;
 }

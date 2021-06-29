@@ -14,15 +14,7 @@ class UserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: _HorizontalMargin),
-      child: CircleAvatar(
-        radius: this._avatarCircleRadius + 1,
-        backgroundColor: Colors.black,
-        child: CircleAvatar(
-            radius: this._avatarCircleRadius,
-            backgroundImage: this._imageProvider),
-      ),
-    );
+    return CircleAvatar(
+        radius: this._avatarCircleRadius, backgroundImage: this._imageProvider);
   }
 }
