@@ -11,4 +11,8 @@ class SessionState extends ChangeNotifier {
   logOut() {
     this._modifyUserID = null;
   }
+
+  logIn(int id) {
+    this._modifyUserID = id;
+  }
 }

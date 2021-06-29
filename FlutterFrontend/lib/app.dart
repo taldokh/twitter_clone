@@ -1,4 +1,5 @@
 import 'package:FlutterFrontend/navigation/Router.dart';
+import 'package:FlutterFrontend/screens/log_in/log_in.dart';
 import 'package:flutter/material.dart';
 import './screens/home/home.dart';
 import './screens/user_profile/user_profile.dart';
@@ -11,7 +12,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       onGenerateRoute: myRouter.Router.generateRoute,
-      initialRoute: HomeRoute,
+      initialRoute: LogInRoute,
     );
   }
 }

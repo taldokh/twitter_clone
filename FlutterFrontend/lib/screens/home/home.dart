@@ -10,16 +10,12 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.white, title: TwitterAppBar()),
-      body: ChangeNotifierProvider(
-          create: (context) => SessionState(),
-          child: Consumer<SessionState>(
-            builder: (context, session, child) {
-              return ListView(
-                  children: [..._fetchHomeWallPosts(session.userID)]);
-            },
-          )),
-    );
+        appBar: AppBar(backgroundColor: Colors.white, title: TwitterAppBar()),
+        body: Consumer<SessionState>(
+          builder: (context, session, child) {
+            return ListView(children: [..._fetchHomeWallPosts(session.userID)]);
+          },
+        ));
   }
 }
 
