@@ -16,7 +16,7 @@ class LogIn extends StatelessWidget {
             return GestureDetector(
               onTap: () {
                 session.logIn(1);
-                Navigator.pushNamed(context, HomeRoute);
+                Navigator.pushReplacementNamed(context, HomeRoute);
               },
               child: Container(
                 height: 200.0,
@@ -35,7 +35,7 @@ class LogIn extends StatelessWidget {
             return GestureDetector(
               onTap: () {
                 session.logIn(2);
-                Navigator.pushNamed(context, HomeRoute);
+                Navigator.pushReplacementNamed(context, HomeRoute);
               },
               child: Container(
                 height: 200.0,
@@ -54,7 +54,7 @@ class LogIn extends StatelessWidget {
             return GestureDetector(
               onTap: () {
                 session.logIn(3);
-                Navigator.pushNamed(context, HomeRoute);
+                Navigator.pushReplacementNamed(context, HomeRoute);
               },
               child: Container(
                 height: 200.0,

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:FlutterFrontend/models/session_state.dart';
 import 'package:FlutterFrontend/navigation/routes.dart';
 import 'package:FlutterFrontend/screens/user_profile/follow_info.dart';
@@ -47,6 +49,11 @@ class MainDrawer extends StatelessWidget {
                 title: Text('Profile'),
                 onTap: () => _onProfileTap(context, session.userID),
               ),
+              ListTile(
+                leading: Icon(Icons.account_circle_outlined),
+                title: Text('Log Out'),
+                onTap: () => _onLogOutTap(context, session),
+              ),
             ],
           );
         },
@@ -77,5 +84,11 @@ class MainDrawer extends StatelessWidget {
   _onProfileTap(BuildContext context, int userID) {
     Navigator.of(context).pop();
     Navigator.pushNamed(context, ProfileRoute, arguments: {'userID': userID});
+  }
+
+  _onLogOutTap(BuildContext context, SessionState session) {
+    Navigator.of(context).pop();
+    session.logOut();
+    Navigator.pushReplacementNamed(context, LogInRoute);
   }
 }
