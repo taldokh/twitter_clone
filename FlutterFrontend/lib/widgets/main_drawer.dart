@@ -24,9 +24,12 @@ class MainDrawer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        UserAvatar(
-                          _userImageById(session.userID).image,
-                          avatarCircleRadius: 30,
+                        GestureDetector(
+                          onTap: () => _onProfileTap(context, session.userID),
+                          child: UserAvatar(
+                            _userImageById(session.userID).image,
+                            avatarCircleRadius: 30,
+                          ),
                         ),
                         Text(
                           _userNameById(session.userID),
@@ -43,10 +46,7 @@ class MainDrawer extends StatelessWidget {
             return ListTile(
               leading: Icon(Icons.account_circle_outlined),
               title: Text('Profile'),
-              onTap: () {
-                Navigator.pushNamed(context, ProfileRoute,
-                    arguments: {'userID': session.userID});
-              },
+              onTap: () => _onProfileTap(context, session.userID),
             );
           }),
         ],
@@ -72,5 +72,10 @@ class MainDrawer extends StatelessWidget {
 
   String _userFollowingById(int userId) {
     return users.firstWhere((user) => user.id == userId).followingCount;
+  }
+
+  _onProfileTap(BuildContext context, int userID) {
+    Navigator.of(context).pop();
+    Navigator.pushNamed(context, ProfileRoute, arguments: {'userID': userID});
   }
 }
