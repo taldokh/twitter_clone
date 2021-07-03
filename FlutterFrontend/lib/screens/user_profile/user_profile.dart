@@ -20,7 +20,11 @@ class UserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.white, title: TwitterAppBar()),
+      appBar: AppBar(
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.white,
+          title: TwitterAppBarIcon()),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +55,8 @@ class UserProfile extends StatelessWidget {
             _userNameById(post.userId),
             _userHandleById(post.userId),
             post.uploadTime,
-            post.content, post.userId)))
+            post.content,
+            post.userId)))
         .toList();
   }
 
