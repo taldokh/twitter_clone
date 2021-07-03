@@ -11,16 +11,16 @@ class MainDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-              child: Container(
-            child: Align(
-                alignment: Alignment.topLeft,
-                child:
-                    Consumer<SessionState>(builder: (context, session, child) {
-                  return Column(
+      child: Consumer<SessionState>(
+        builder: (context, session, child) {
+          return ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                  child: Container(
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -39,17 +39,17 @@ class MainDrawer extends StatelessWidget {
                         Handle(_userHandleById(session.userID)),
                         FollowInfo(_userFollowingById(session.userID),
                             _userFollowersById(session.userID))
-                      ]);
-                })),
-          )),
-          Consumer<SessionState>(builder: (context, session, child) {
-            return ListTile(
-              leading: Icon(Icons.account_circle_outlined),
-              title: Text('Profile'),
-              onTap: () => _onProfileTap(context, session.userID),
-            );
-          }),
-        ],
+                      ]),
+                ),
+              )),
+              ListTile(
+                leading: Icon(Icons.account_circle_outlined),
+                title: Text('Profile'),
+                onTap: () => _onProfileTap(context, session.userID),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
