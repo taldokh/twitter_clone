@@ -56,6 +56,7 @@ class UserProfile extends StatelessWidget {
             _userHandleById(post.userId),
             post.uploadTime,
             post.content,
+            post.likes,
             post.userId)))
         .toList();
   }

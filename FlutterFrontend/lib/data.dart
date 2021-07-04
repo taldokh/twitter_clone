@@ -87,7 +87,7 @@ List<Post> posts = [
             fit: BoxFit.fill,
           ),
           'It’s time to level up. \nClick to shop the latest collection: http://projectrock.online/tpp\n#ThroughTheWork\n#ProjectRock\n@TheRock'),
-      [1, 3],
+      [3],
       List.empty(),
       'Jun 1'),
   Post(
@@ -95,7 +95,7 @@ List<Post> posts = [
       2,
       TextContent(
           'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-      [1, 3],
+      [1],
       List.empty(),
       'May 20'),
   Post(
@@ -104,7 +104,7 @@ List<Post> posts = [
       ImageContent(Image.asset(
         'assets/images/post_image32.jpg',
       )),
-      [1, 3],
+      [1, 2],
       List.empty(),
       'Apr 8'),
 ];

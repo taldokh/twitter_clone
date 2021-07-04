@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:FlutterFrontend/models/content.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -8,10 +10,11 @@ class FetchedPost {
   final String _handle;
   final String _uploadTime;
   final Content _content;
+  final List<int> _likes;
   final int _userID;
 
   FetchedPost(this._userImage, this._name, this._handle, this._uploadTime,
-      this._content, this._userID);
+      this._content, this._likes, this._userID);
 
   Image get userImage => this._userImage;
 
@@ -22,6 +25,10 @@ class FetchedPost {
   String get uploadTime => this._uploadTime;
 
   Content get content => this._content;
+
+  UnmodifiableListView<int> get likes => UnmodifiableListView(this._likes);
+
+  String get likesCount => this.likes.length.toString();
 
   int get userID => this._userID;
 }

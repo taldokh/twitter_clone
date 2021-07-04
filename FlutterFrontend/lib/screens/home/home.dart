@@ -50,6 +50,7 @@ List<UserPost> _fetchHomeWallPosts(int id) {
                 _userHandleById(post.userId),
                 post.uploadTime,
                 post.content,
+                post.likes,
                 post.userId),
           ))
       .toList();

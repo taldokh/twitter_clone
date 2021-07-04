@@ -1,8 +1,10 @@
+import 'package:FlutterFrontend/models/session_state.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:FlutterFrontend/models/image_and_text_content.dart';
 import 'package:FlutterFrontend/models/image_content.dart';
 import 'package:FlutterFrontend/models/text_content.dart';
+import 'package:provider/provider.dart';
 import '../models/content.dart';
 import '../models/fetched_post.dart';
 import './post_text.dart';
@@ -48,7 +50,23 @@ class UserPost extends StatelessWidget {
                     ),
                     Container(
                         margin: EdgeInsets.only(top: 5),
-                        child: this._contentType(this._fetchedPost.content))
+                        child: this._contentType(this._fetchedPost.content)),
+                    Container(
+                        child: Row(
+                      children: [
+                        Consumer<SessionState>(
+                          builder: (context, session, child) {
+                            return Icon(
+                              _didUserLiked(session.userID)
+                                  ? Icons.favorite
+                                  : Icons.favorite_outline,
+                              color: Color(0xFF536471),
+                            );
+                          },
+                        ),
+                        Text(this._fetchedPost.likesCount)
+                      ],
+                    ))
                   ],
                 ),
               ),
@@ -57,6 +75,10 @@ class UserPost extends StatelessWidget {
         ),
       ),
     ]);
+  }
+
+  bool _didUserLiked(int userID) {
+    return this._fetchedPost.likes.contains(userID);
   }
 
   _onProfileTap(BuildContext context, int userID) {
