@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 
 // data object model that represents every post
 class FetchedPost {
+  final int _postID;
   final Image _userImage;
   final String _name;
   final String _handle;
@@ -13,8 +14,10 @@ class FetchedPost {
   final List<int> _likes;
   final int _userID;
 
-  FetchedPost(this._userImage, this._name, this._handle, this._uploadTime,
-      this._content, this._likes, this._userID);
+  FetchedPost(this._postID, this._userImage, this._name, this._handle,
+      this._uploadTime, this._content, this._likes, this._userID);
+
+  int get postID => this._postID;
 
   Image get userImage => this._userImage;
 
@@ -28,7 +31,7 @@ class FetchedPost {
 
   UnmodifiableListView<int> get likes => UnmodifiableListView(this._likes);
 
-  String get likesCount => this.likes.length.toString();
+  int get likesCount => this.likes.length;
 
   int get userID => this._userID;
 }

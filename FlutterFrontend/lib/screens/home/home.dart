@@ -45,6 +45,7 @@ List<UserPost> _fetchHomeWallPosts(int id) {
       .where((post) => followingUsersPostsIDs.contains(post.postId))
       .map((post) => UserPost(
             FetchedPost(
+                post.postId,
                 _userImageById(post.userId),
                 _userNameById(post.userId),
                 _userHandleById(post.userId),
