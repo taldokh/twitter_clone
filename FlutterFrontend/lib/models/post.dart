@@ -1,5 +1,6 @@
 import 'content.dart';
 import 'comment.dart';
+
 // data object model that holds all the information related to a post
 class Post {
   final int _postId;
@@ -9,8 +10,8 @@ class Post {
   final List<Comment> _comments;
   final String _uploadTime;
 
-  Post(
-      this._postId, this._userId, this._content, this._likes, this._comments, this._uploadTime);
+  Post(this._postId, this._userId, this._content, this._likes, this._comments,
+      this._uploadTime);
 
   int get postId => this._postId;
 

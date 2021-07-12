@@ -51,11 +51,13 @@ class UserProfile extends StatelessWidget {
     return posts
         .where((post) => post.userId == this._user.id)
         .map((post) => UserPost(FetchedPost(
+            post.postId,
             _userImageById(post.userId),
             _userNameById(post.userId),
             _userHandleById(post.userId),
             post.uploadTime,
             post.content,
+            post.likes,
             post.userId)))
         .toList();
   }
