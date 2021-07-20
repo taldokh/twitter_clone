@@ -10,6 +10,7 @@ const int loggedInUser = 1;
 List<User> users = [
   User(
       1,
+      'Password1',
       "Dwayne Johnson",
       "TheRock",
       "therock@gmail.com",
@@ -26,6 +27,7 @@ List<User> users = [
       '2'),
   User(
       2,
+      'Password22',
       "Jimmy Kimmel Live",
       "JimmyKimmelLive",
       "jimmykimmellive@gmail.com",
@@ -42,6 +44,7 @@ List<User> users = [
       '2'),
   User(
       3,
+      'Password333',
       "Gal Gadot",
       "GalGadot",
       "galgadot@gmail.com",

@@ -11,7 +11,7 @@ class LogInForm extends StatelessWidget {
       builder: (context, form, _) => Column(
         children: [
           TextField(
-            onChanged: (val) => form.userFieldLength = val.length,
+            onChanged: (userField) => form.userField = userField,
             decoration: InputDecoration(
                 border: UnderlineInputBorder(),
                 labelText: 'Email or username',
@@ -26,7 +26,7 @@ class LogInForm extends StatelessWidget {
             enableSuggestions: false,
             autocorrect: false,
             obscureText: true,
-            onChanged: (val) => form.passwordFieldLength = val.length,
+            onChanged: (pass) => form.passwordField = pass,
             decoration: InputDecoration(
                 border: UnderlineInputBorder(),
                 labelText: 'Password',

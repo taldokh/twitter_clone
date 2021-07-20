@@ -2,25 +2,29 @@ import 'package:flutter/foundation.dart';
 
 class LogInFormValidationState extends ChangeNotifier {
   bool _isFormValid = false;
-  int _userFieldLength = 0;
-  int _passwordFieldLength = 0;
+  String _userField = "";
+  String _passwordField = "";
 
   bool get isFormValid => this._isFormValid;
 
   set __isFormValid(bool newFormState) => this._isFormValid = newFormState;
 
-  set userFieldLength(int updatedUserFieldLength) {
-    this._userFieldLength = updatedUserFieldLength;
+  get userField => this._userField;
+
+  get passwordField => this._passwordField;
+
+  set userField(String updatedUserFieldLength) {
+    this._userField = updatedUserFieldLength;
     _validate();
   }
 
-  set passwordFieldLength(int updatedPasswordFieldLength) {
-    this._passwordFieldLength = updatedPasswordFieldLength;
+  set passwordField(String updatedPasswordFieldLength) {
+    this._passwordField = updatedPasswordFieldLength;
     _validate();
   }
 
   _validate() {
-    bool val = _userFieldLength > 0 && _passwordFieldLength > 0;
+    bool val = _userField.length > 0 && _passwordField.length > 0;
     if (val != isFormValid) {
       if (val) {
         this._formIsValid();
