@@ -88,7 +88,7 @@ class MainDrawer extends StatelessWidget {
 
   _onLogOutTap(BuildContext context, SessionState session) {
     Navigator.of(context).pop();
-    session.logOut();
     Navigator.pushReplacementNamed(context, LogInRoute);
+    session.logOut();
   }
 }

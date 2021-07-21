@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:provider/provider.dart';
 
 class SessionState extends ChangeNotifier {
   int _userID = 1;
@@ -10,9 +9,11 @@ class SessionState extends ChangeNotifier {
 
   logOut() {
     this._modifyUserID = null;
+    notifyListeners();
   }
 
   logIn(int id) {
     this._modifyUserID = id;
+    notifyListeners();
   }
 }
