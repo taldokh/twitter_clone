@@ -1,8 +1,11 @@
+import 'package:FlutterFrontend/models/session_state.dart';
+import 'package:FlutterFrontend/widgets/post_action_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:FlutterFrontend/models/image_and_text_content.dart';
 import 'package:FlutterFrontend/models/image_content.dart';
 import 'package:FlutterFrontend/models/text_content.dart';
+import 'package:provider/provider.dart';
 import '../models/content.dart';
 import '../models/fetched_post.dart';
 import './post_text.dart';
@@ -48,7 +51,8 @@ class UserPost extends StatelessWidget {
                     ),
                     Container(
                         margin: EdgeInsets.only(top: 5),
-                        child: this._contentType(this._fetchedPost.content))
+                        child: this._contentType(this._fetchedPost.content)),
+                    PostActionBar(this._fetchedPost.likes, this._fetchedPost.likesCount, this._fetchedPost.postID)
                   ],
                 ),
               ),

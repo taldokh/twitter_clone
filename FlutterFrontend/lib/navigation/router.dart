@@ -19,7 +19,7 @@ class Router {
         break;
       case LogInRoute:
         screen = LogIn();
-        break; 
+        break;
       default:
         screen = Home();
     }

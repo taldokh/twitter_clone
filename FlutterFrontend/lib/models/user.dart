@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 // data object model that holds all the information related to a user
 class User {
   final int _id;
+  final String _password;
   final String _name;
   final String _handle;
   final String _email;
@@ -18,6 +19,7 @@ class User {
 
   User(
       this._id,
+      this._password,
       this._name,
       this._handle,
       this._email,
@@ -32,6 +34,8 @@ class User {
       this._followingCount);
 
   int get id => this._id;
+
+  String get password => this._password;
 
   String get handle => this._handle;
 
