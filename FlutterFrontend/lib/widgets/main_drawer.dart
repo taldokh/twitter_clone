@@ -7,6 +7,7 @@ import 'package:FlutterFrontend/widgets/handle.dart';
 import 'package:FlutterFrontend/widgets/user_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../api.dart';
 import './../data.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -29,18 +30,18 @@ class MainDrawer extends StatelessWidget {
                         GestureDetector(
                           onTap: () => _onProfileTap(context, session.userID),
                           child: UserAvatar(
-                            _userImageById(session.userID).image,
+                            Api.userImageById(session.userID).image,
                             avatarCircleRadius: 30,
                           ),
                         ),
                         Text(
-                          _userNameById(session.userID),
+                          Api.userNameById(session.userID),
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        Handle(_userHandleById(session.userID)),
-                        FollowInfo(_userFollowingById(session.userID),
-                            _userFollowersById(session.userID))
+                        Handle(Api.userHandleById(session.userID)),
+                        FollowInfo(Api.userFollowingById(session.userID),
+                            Api.userFollowersById(session.userID))
                       ]),
                 ),
               )),
@@ -59,26 +60,6 @@ class MainDrawer extends StatelessWidget {
         },
       ),
     );
-  }
-
-  Image _userImageById(int userId) {
-    return users.firstWhere((user) => user.id == userId).photo;
-  }
-
-  String _userHandleById(int userId) {
-    return users.firstWhere((user) => user.id == userId).handle;
-  }
-
-  String _userNameById(int userId) {
-    return users.firstWhere((user) => user.id == userId).name;
-  }
-
-  String _userFollowersById(int userId) {
-    return users.firstWhere((user) => user.id == userId).followersCount;
-  }
-
-  String _userFollowingById(int userId) {
-    return users.firstWhere((user) => user.id == userId).followingCount;
   }
 
   _onProfileTap(BuildContext context, int userID) {

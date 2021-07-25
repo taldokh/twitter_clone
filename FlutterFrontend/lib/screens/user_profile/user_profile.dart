@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../api.dart';
 import '../../data.dart';
 import '../../widgets/user_post.dart';
 import '../../models/fetched_post.dart';
@@ -14,7 +15,7 @@ class UserProfile extends StatelessWidget {
   static const double _AvatarRadius = 38;
   User _user;
   UserProfile(int userID) {
-    this._user = _fetchUser(userID);
+    this._user = Api.fetchUser(userID);
   }
 
   @override
@@ -36,41 +37,10 @@ class UserProfile extends StatelessWidget {
                 this._user.joinDate,
                 this._user.followingCount,
                 this._user.followersCount),
-            Column(children: [..._fetchPosts()])
+            Column(children: [...Api.fetchProfilePageWallPosts(this._user.id)])
           ],
         ),
       ),
     );
-  }
-
-  User _fetchUser(int userID) {
-    return users.singleWhere((user) => user.id == userID);
-  }
-
-  List<UserPost> _fetchPosts() {
-    return posts
-        .where((post) => post.userId == this._user.id)
-        .map((post) => UserPost(FetchedPost(
-            post.postId,
-            _userImageById(post.userId),
-            _userNameById(post.userId),
-            _userHandleById(post.userId),
-            post.uploadTime,
-            post.content,
-            post.likes,
-            post.userId)))
-        .toList();
-  }
-
-  Image _userImageById(int userId) {
-    return users.firstWhere((user) => user.id == userId).photo;
-  }
-
-  String _userHandleById(int userId) {
-    return users.firstWhere((user) => user.id == userId).handle;
-  }
-
-  String _userNameById(int userId) {
-    return users.firstWhere((user) => user.id == userId).name;
   }
 }
