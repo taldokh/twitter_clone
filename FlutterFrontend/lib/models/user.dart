@@ -3,45 +3,61 @@ import 'package:flutter/cupertino.dart';
 // data object model that holds all the information related to a user
 class User {
   final int _id;
-  final String _userName;
-  final String _firstName;
-  final String _lastName;
+  final String _password;
+  final String _name;
+  final String _handle;
   final String _email;
-  final String _about;
-  final Image _imagePath;
+  final String _bio;
+  final Image _photo;
+  final Image _headerPhoto;
   final List<int> _followers;
   final List<int> _following;
   final List<int> _posts;
+  final String _joinDate;
+  final String _followersCount;
+  final String _followingCount;
 
   User(
       this._id,
-      this._userName,
-      this._firstName,
-      this._lastName,
+      this._password,
+      this._name,
+      this._handle,
       this._email,
-      this._about,
-      this._imagePath,
+      this._bio,
+      this._photo,
+      this._headerPhoto,
       this._followers,
       this._following,
-      this._posts);
+      this._posts,
+      this._joinDate,
+      this._followersCount,
+      this._followingCount);
 
   int get id => this._id;
 
-  String get userName => this._userName;
+  String get password => this._password;
 
-  String get firstName => this._firstName;
+  String get handle => this._handle;
 
-  String get lastName => this._lastName;
+  String get name => this._name;
 
   String get email => this._email;
 
-  String get about => this._about;
+  String get bio => this._bio;
 
-  Image get imagePath => this._imagePath;
+  Image get photo => this._photo;
+
+  Image get headerPhoto => this._headerPhoto;
 
   List<int> get followers => this._followers;
 
   List<int> get following => this._following;
 
   List<int> get posts => this._posts;
+
+  String get joinDate => this._joinDate;
+
+  String get followersCount => this._followersCount;
+
+  String get followingCount => this._followingCount;
 }
