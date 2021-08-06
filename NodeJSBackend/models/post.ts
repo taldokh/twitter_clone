@@ -1,4 +1,6 @@
-class Post {
+import { Content } from './content';
+
+export class Post {
 
     constructor(postId: number,
         userId: number,

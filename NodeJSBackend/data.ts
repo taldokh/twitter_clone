@@ -1,3 +1,9 @@
+import { User } from './models/user'
+import { Post } from './models/post'
+import { TextContent } from './models/text_content'
+import { ImageAndTextContent } from './models/image_and_text_content'
+import { ImageContent } from './models/image_content'
+
 let users: Array<User> = [new User(
     1,
     'Password1',
