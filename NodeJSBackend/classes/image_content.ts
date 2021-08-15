@@ -2,7 +2,7 @@ import { Content } from './content';
 
 export class ImageContent extends Content {
 
-    constructor(image: String) {
+    constructor(public image: String) {
         super();
     }
 }

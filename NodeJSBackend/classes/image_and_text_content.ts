@@ -2,7 +2,7 @@ import { TextContent } from './text_content';
 
 export class ImageAndTextContent extends TextContent {
 
-    constructor(image: String, text: String) {
+    constructor(public image: String, text: String) {
         super(text);
     }
 }

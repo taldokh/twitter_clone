@@ -1,10 +1,11 @@
-import { User } from './models/user'
-import { Post } from './models/post'
-import { TextContent } from './models/text_content'
-import { ImageAndTextContent } from './models/image_and_text_content'
-import { ImageContent } from './models/image_content'
+import { User } from './classes/user'
+import { Post } from './classes/post'
+import { TextContent } from './classes/text_content'
+import { ImageAndTextContent } from './classes/image_and_text_content'
+import { ImageContent } from './classes/image_content'
+export { posts, users};
 
-let users: Array<User> = [new User(
+const users: Array<User> = [new User(
     1,
     'Password1',
     "Dwayne Johnson",
@@ -51,7 +52,7 @@ new User(
     '2',
     '1'),];
 
-let posts: Array<Post> = [new Post(
+const posts: Array<Post> = [new Post(
     1,
     2,
     new TextContent(
