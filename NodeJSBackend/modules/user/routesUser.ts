@@ -25,4 +25,6 @@ router.get('/profile_image/:id', (req: any, res: any) => {
 
 router.get('/header_image/:id', (req: any, res: any) => {
     res.send('user avatar image');
-}); 
+});
+
+module.exports = router;

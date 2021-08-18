@@ -23,3 +23,4 @@ router.get('/profile_image/:id', function (req, res) {
 router.get('/header_image/:id', function (req, res) {
     res.send('user avatar image');
 });
+module.exports = router;
