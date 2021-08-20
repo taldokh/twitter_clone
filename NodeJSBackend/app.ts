@@ -1,6 +1,6 @@
 const express = require('express');
-// const mongoClient = require('mongodb').MongoClient;
-// const uri = 'mongodb://localhost:27017/';
+const mongoClient = require('mongodb').MongoClient;
+const uri = 'mongodb://localhost:27017/';
 const app = express();
 const port = 3000;
 
@@ -26,6 +26,8 @@ const userRoutes = require('./modules/user/routesUser');
 
 app.get('/', (_req: any, res: any) => {
     res.send('hello world');
+    console.log(mongoClient);
+    new mongoClient().getDB("ta");
 });
 
 app.use('/post', postRoutes);
@@ -34,4 +36,6 @@ app.use('/user', userRoutes);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
+    mongoClient.connect(uri, function (err: any, db: any) {
+    });
 });

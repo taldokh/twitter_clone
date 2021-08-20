@@ -1,4 +1,4 @@
-import { userService } from './serviceUser';
+import { userService } from './user.service';
 const express = require("express");
 const router = express.Router();
 

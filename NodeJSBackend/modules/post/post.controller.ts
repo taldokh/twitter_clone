@@ -1,4 +1,4 @@
-import { postService } from './servicePost';
+import { postService } from './post.service';
 const express = require("express");
 const router = express.Router();
 

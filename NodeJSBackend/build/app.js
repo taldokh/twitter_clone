@@ -1,7 +1,7 @@
 "use strict";
 var express = require('express');
-// const mongoClient = require('mongodb').MongoClient;
-// const uri = 'mongodb://localhost:27017/';
+var mongoClient = require('mongodb').MongoClient;
+var uri = 'mongodb://localhost:27017/';
 var app = express();
 var port = 3000;
 var postRoutes = require('./modules/post/routesPost');
@@ -24,9 +24,13 @@ var userRoutes = require('./modules/user/routesUser');
 // });
 app.get('/', function (_req, res) {
     res.send('hello world');
+    console.log(mongoClient);
+    new mongoClient().getDB("ta");
 });
 app.use('/post', postRoutes);
 app.use('/user', userRoutes);
 app.listen(port, function () {
     console.log("Example app listening at http://localhost:" + port);
+    mongoClient.connect(uri, function (err, db) {
+    });
 });
