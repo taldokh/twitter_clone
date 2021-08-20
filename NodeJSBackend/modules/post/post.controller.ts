@@ -1,13 +1,13 @@
 import { postService } from './post.service';
 const express = require("express");
-const router = express.Router();
+const postController = express.Router();
 
-router.get('/', (req: any, res: any) => {
+postController.get('/', (req: any, res: any) => {
     res.send('hello');
 });
 
 // get the home page wall posts by the logged in user id
-router.get('/home/:id', (req: any, res: any) => {
+postController.get('/home/:id', (req: any, res: any) => {
     res.json(postService.homeWall(req.params.id));
 });
 
@@ -29,7 +29,7 @@ router.get('/home/:id', (req: any, res: any) => {
 */
 
 // get profile page wall posts by the logged in user id
-router.get('/profile_page/:id', (req: any, res: any) => {
+postController.get('/profile_page/:id', (req: any, res: any) => {
     res.json(postService.homeWall(req.params.id));
 });
 
@@ -51,7 +51,7 @@ router.get('/profile_page/:id', (req: any, res: any) => {
 */
 
 // get the post image by id ********************** ? *********************
-router.get('/image/:id', (req: any, res: any) => {
+postController.get('/image/:id', (req: any, res: any) => {
     res.send('image');
 });
 
@@ -62,14 +62,14 @@ router.get('/image/:id', (req: any, res: any) => {
 */
 
 // like a post
-router.put('/like/user_id/:id/post_id/:id', (req: any, res: any) => {
+postController.put('/like/user_id/:id/post_id/:id', (req: any, res: any) => {
     res.send('liked');
 });
 
 // unlike a post
-router.put('/unlike/user_id/:id/post_id/:id', (req: any, res: any) => {
+postController.put('/unlike/user_id/:id/post_id/:id', (req: any, res: any) => {
     res.send('unliked');
 });
 
 
-module.exports = router;
+export { postController };

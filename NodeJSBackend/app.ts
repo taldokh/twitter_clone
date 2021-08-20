@@ -1,11 +1,9 @@
+import { postController, userController } from "./modules/modules.index";
 const express = require('express');
 const mongoClient = require('mongodb').MongoClient;
 const uri = 'mongodb://localhost:27017/';
 const app = express();
 const port = 3000;
-
-const postRoutes = require('./modules/post/routesPost');
-const userRoutes = require('./modules/user/routesUser');
 
 // mongoClient.connect(url, function (err: any, db: any) {
 //     if (err) throw err;
@@ -30,9 +28,9 @@ app.get('/', (_req: any, res: any) => {
     new mongoClient().getDB("ta");
 });
 
-app.use('/post', postRoutes);
+app.use('/post', postController);
 
-app.use('/user', userRoutes);
+app.use('/user', userController);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
