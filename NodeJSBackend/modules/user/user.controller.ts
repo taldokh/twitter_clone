@@ -2,8 +2,8 @@ import { userService } from './user.service';
 const express = require("express");
 const userController = express.Router();
 
-userController.get('/profile_page_details/:id', (req: any, res: any) => {
-    res.send('user details');
+userController.get('/profile_page_details/:id', async (req: any, res: any) => {
+    res.json(await userService.profilePageDetails(req.params.id));
 });
 
 /*

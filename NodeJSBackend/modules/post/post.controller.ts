@@ -30,7 +30,7 @@ postController.get('/home/:id', (req: any, res: any) => {
 
 // get profile page wall posts by the logged in user id
 postController.get('/profile_page/:id', (req: any, res: any) => {
-    res.json(postService.homeWall(req.params.id));
+    res.json(postService.profilePage(req.params.id));
 });
 
 /*

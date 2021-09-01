@@ -1,9 +1,13 @@
 import { posts, users } from '../../data'
-import { Post } from '../../classes/post'
+import { Post } from './../../database/models/post.model'
 
-const postDal = {
+export const postDal = {
 
-    homeWall: (id: number) => {
+    homeWall: async (id: Number) => {
+        return await Post.find({})
+    },
 
+    profiePage: async (id: Number) => {
+        return await Post.find({});
     }
 }
