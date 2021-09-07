@@ -1,32 +1,16 @@
 import { postController, userController } from "./modules/modules.index";
 import { User } from './database/models/user.model';
+import { initFSBucket, fsBucket } from "./database/grid_fs/fs";
+const fs = require('fs');
 const express = require('express');
 const mongoose = require('mongoose');
-const mongoClient = require('mongodb').MongoClient;
 const uri = 'mongodb://localhost:27017/twitter';
 const app = express();
 const port = 3000;
 
-// mongoClient.connect(url, function (err: any, db: any) {
-//     if (err) throw err;
-//     console.log("Database created!");
-//     const dbo = db.db("tal");
-//     dbo.collection("movies").insertOne({
-//         title: "The Favourite",
-//         geners: ["Drama", "History"],
-//         runtime: 121
-//     }, (err: any, res: any) => {
-//         if (err) console.log(err);
-//         console.log(res)
-//         console.log('Document created!'); 
-//         db.close();
-//     }
-//     )
-// });
-
 app.get('/', (_req: any, res: any) => {
-    res.send('hello world');
-    console.log(mongoClient);
+    //res.send('hello world');
+    fsBucket.openDownloadStreamByName('22').pipe(res);
 });
 
 app.use('/post', postController);
@@ -37,7 +21,8 @@ app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
     mongoose.connect(uri, { useNewUrlParser: true }, async function (err: any, db: any) {
         await mongoose.connection.db.dropDatabase();
-        let users = [
+        initFSBucket(mongoose.connection.db);
+        const users = [
             {
                 _id: 1,
                 password: 'Password1',
@@ -45,8 +30,8 @@ app.listen(port, () => {
                 handle: "TheRock",
                 email: "therock@gmail.com",
                 bio: "CEO Seven Bucks Companies",
-                photo: "assets/images/photo1.jpeg",
-                headerPhoto: "assets/images/header_photo1.jpg",
+                profileImageId: 11,
+                headerImageId: 21,
                 followers: [2],
                 following: [2, 3],
                 posts: [3],
@@ -62,8 +47,8 @@ app.listen(port, () => {
                 handle: "JimmyKimmelLive",
                 email: "jimmykimmellive@gmail.com",
                 bio: "The official Twitter for Jimmy Kimmel Live with @JimmyKimmel on ABC! We have fun.",
-                photo: "assets/images/photo2.jpg",
-                headerPhoto: "assets/images/header_photo2.jpg",
+                profileImageId: 12,
+                headerImageId: 22,
                 followers: [1, 3],
                 following: [1, 3],
                 posts: [1, 4],
@@ -79,8 +64,8 @@ app.listen(port, () => {
                 handle: "GalGadot",
                 email: "galgadot@gmail.com",
                 bio: "",
-                photo: "assets/images/photo3.jpg",
-                headerPhoto: "assets/images/header_photo3.jpg",
+                profileImageId: 13,
+                headerImageId: 23,
                 followers: [1, 2],
                 following: [2],
                 posts: [2, 5],
@@ -89,6 +74,14 @@ app.listen(port, () => {
                 followingCount: '1'
             },
         ];
+
         await User.collection.insertMany(users);
+
+        fs.createReadStream('./assets/photo1.jpeg').pipe(fsBucket.openUploadStream('11'));
+        fs.createReadStream('./assets/photo2.jpg').pipe(fsBucket.openUploadStream('12'));
+        fs.createReadStream('./assets/photo3.jpg').pipe(fsBucket.openUploadStream('13'));
+        fs.createReadStream('./assets/header_photo1.jpg').pipe(fsBucket.openUploadStream('21'));
+        fs.createReadStream('./assets/header_photo2.jpg').pipe(fsBucket.openUploadStream('22'));
+        fs.createReadStream('./assets/header_photo3.jpg').pipe(fsBucket.openUploadStream('23'));
     });
 });
