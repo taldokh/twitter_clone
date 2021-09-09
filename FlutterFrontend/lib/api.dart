@@ -13,7 +13,7 @@ class Api {
     }
   }
 
-  static dislike(int postID, int userID) {
+  static unlike(int postID, int userID) {
     Post unupdatedPost = posts.firstWhere((post) => post.postId == postID);
     if (unupdatedPost.likes.contains(userID)) {
       unupdatedPost.likes.remove(userID);

@@ -34,7 +34,7 @@ class _PostActionBarState extends State<PostActionBar> {
             GestureDetector(
               onTap: () => setState(() {
                 this.isLiked
-                    ? Api.dislike(
+                    ? Api.unlike(
                         widget._postID,
                         Provider.of<SessionState>(context, listen: false)
                             .userID)
