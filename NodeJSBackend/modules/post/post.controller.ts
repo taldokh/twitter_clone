@@ -2,11 +2,9 @@ import { postService } from './post.service';
 const express = require("express");
 const postController = express.Router();
 
-// get the home page wall posts by the logged in user id
 postController.get('/home/:id', async (req: any, res: any) => {
-    res.json(await postService.homeWall(req.params.id));
+    res.json(await postService.homewall(req.params.id));
 });
-
 /*
 {
     postId,

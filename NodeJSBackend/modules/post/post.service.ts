@@ -1,11 +1,10 @@
 import { postDal } from './post.dal';
 import { userService } from '../user/user.service';
 
-
 export const postService = {
 
-    homeWall: async (id: string) => {
-        return await postDal.homeWall((await userService.followingList(parseInt(id))).following);
+    homewall: async (id: string) => {
+        return await postDal.homewall(await userService.postsIdsOfFollowingUsers(id));
     },
 
     profilePage: async (id: string) => {

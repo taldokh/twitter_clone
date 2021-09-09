@@ -3,7 +3,7 @@ import { userDal } from './user.dal';
 export const userService = {
 
     profilePageDetails: async (id: string) => {
-        return await userDal.profilePageDetails(Number(id));
+        return await userDal.profilePageDetails(parseInt(id));
     },
 
     profileImage: async (id: string) => {
@@ -14,11 +14,11 @@ export const userService = {
         return await userDal.headerImage(id);
     },
 
-    postHeader: async (id: Number) => {
-        return await userDal.postHeader(id);
+    postHeader: async (id: string) => {
+        return await userDal.postHeader(parseInt(id));
     },
 
-    followingList: async (id: Number) => {
-        return await userDal.followingList(id);
-    }
+    postsIdsOfFollowingUsers: async (id: string) => {
+        return (await userDal.postsIdsOfFollowingUsers(parseInt(id)))[0].posts;
+    },
 }
