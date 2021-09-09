@@ -1,6 +1,10 @@
 import { postController, userController } from "./modules/modules.index";
 import { User } from './database/models/user.model';
+import { Post } from './database/models/post.model';
 import { initFSBucket, fsBucket } from "./database/grid_fs/fs";
+import { TextContent } from './classes/text_content'
+import { ImageAndTextContent } from './classes/image_and_text_content'
+import { ImageContent } from './classes/image_content'
 const fs = require('fs');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -69,7 +73,61 @@ app.listen(port, () => {
             },
         ];
 
+        const posts = [
+            {
+                _id: 1,
+                userId: 2,
+                content: new TextContent(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+                likes: [1, 3],
+                comments: [],
+                uploadTime: '17h'
+            },
+
+            {
+                _id: 2,
+                userId: 3,
+                content: new ImageAndTextContent(
+                    'assets/images/post_image31.jpg',
+                    'Took some time off and spent it at my favorite place, the sound of the waves, the smell of the ocean, the sand in my toes, those always make me calmer, happier and ready for anything...'),
+                likes: [1, 3],
+                comments: [],
+                uploadTime: '22h'
+            },
+
+            {
+                _id: 3,
+                userId: 1,
+                content: new ImageAndTextContent(
+                    'assets/images/post_image11.jpg',
+                    'It’s time to level up. \nClick to shop the latest collection: http://projectrock.online/tpp\n#ThroughTheWork\n#ProjectRock\n@TheRock'),
+                likes: [3],
+                comments: [],
+                uploadTime: 'Jun 1'
+            },
+            {
+                _id: 4,
+                userId: 2,
+                content: new TextContent(
+                    'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+                likes: [1],
+                comments: [],
+                uploadTime: 'May 20'
+            },
+            {
+                _id: 5,
+                userId: 3,
+                content: new ImageContent(
+                    'assets/images/post_image32.jpg')
+                , likes: [1, 2],
+                comments: [],
+                uploadTime: 'Apr 8'
+            },
+        ];
+
         await User.collection.insertMany(users);
+
+        await Post.collection.insertMany(posts);
 
         fs.createReadStream('./assets/photo1.jpeg').pipe(fsBucket.openUploadStream('11'));
         fs.createReadStream('./assets/photo2.jpg').pipe(fsBucket.openUploadStream('12'));
@@ -77,5 +135,8 @@ app.listen(port, () => {
         fs.createReadStream('./assets/header_photo1.jpg').pipe(fsBucket.openUploadStream('21'));
         fs.createReadStream('./assets/header_photo2.jpg').pipe(fsBucket.openUploadStream('22'));
         fs.createReadStream('./assets/header_photo3.jpg').pipe(fsBucket.openUploadStream('23'));
+        fs.createReadStream('./assets/post_image11.jpg').pipe(fsBucket.openUploadStream('1'));
+        fs.createReadStream('./assets/post_image31.jpg').pipe(fsBucket.openUploadStream('2'));
+        fs.createReadStream('./assets/post_image32.jpg').pipe(fsBucket.openUploadStream('3'));
     });
 });

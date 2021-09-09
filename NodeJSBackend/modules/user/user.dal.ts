@@ -1,6 +1,5 @@
 import { User } from './../../database/models/user.model';
 import { fsBucket } from '../../database/grid_fs/fs';
-import { Console } from 'console';
 
 export const userDal = {
 
@@ -16,14 +15,18 @@ export const userDal = {
                 headerImageId: 1,
                 followers: { $size: "$followers" },
                 following: { $size: "$following" }
-            })
+            });
     },
 
-    profileImage: async (id: Number) => {
-        return await fsBucket.openDownloadStreamByName('1' + String(id));
+    profileImage: async (id: string) => {
+        return await fsBucket.openDownloadStreamByName('1' + id);
     },
 
-    headerImage: async (id: Number) => {
-        return fsBucket.openDownloadStreamByName('2' + String(id));
+    headerImage: async (id: string) => {
+        return fsBucket.openDownloadStreamByName('2' + id);
+    },
+
+    postHeader: async (id: Number) => {
+        return await User.findById(id).select('name handle');
     }
 }
