@@ -13,6 +13,4 @@ export const userSchema = new Schema({
     following: [Number],
     posts: [Number],
     joinDate: String,
-    followersCount: String,
-    followingCount: String
 });

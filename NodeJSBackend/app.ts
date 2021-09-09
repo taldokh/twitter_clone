@@ -35,9 +35,7 @@ app.listen(port, () => {
                 followers: [2],
                 following: [2, 3],
                 posts: [3],
-                joinDate: "February 2011",
-                followersCount: '1',
-                followingCount: '2'
+                joinDate: "February 2011"
             },
 
             {
@@ -52,9 +50,7 @@ app.listen(port, () => {
                 followers: [1, 3],
                 following: [1, 3],
                 posts: [1, 4],
-                joinDate: "April 2009",
-                followersCount: '2',
-                followingCount: '2'
+                joinDate: "April 2009"
             },
 
             {
@@ -69,9 +65,7 @@ app.listen(port, () => {
                 followers: [1, 2],
                 following: [2],
                 posts: [2, 5],
-                joinDate: "April 2009",
-                followersCount: '2',
-                followingCount: '1'
+                joinDate: "April 2009"
             },
         ];
 

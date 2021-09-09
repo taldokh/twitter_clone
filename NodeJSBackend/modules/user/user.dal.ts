@@ -5,7 +5,18 @@ import { Console } from 'console';
 export const userDal = {
 
     profilePageDetails: async (id: Number) => {
-        return await User.findById(id).select('name userHandle joinDate bio profileImageId headerImageId followers following');
+        return await User.aggregate()
+            .match({ _id: id })
+            .project({
+                name: 1,
+                handle: 1,
+                joinDate: 1,
+                bio: 1,
+                profileImageId: 1,
+                headerImageId: 1,
+                followers: { $size: "$followers" },
+                following: { $size: "$following" }
+            })
     },
 
     profileImage: async (id: Number) => {
