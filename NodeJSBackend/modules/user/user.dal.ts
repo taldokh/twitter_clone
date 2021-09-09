@@ -28,5 +28,9 @@ export const userDal = {
 
     postHeader: async (id: Number) => {
         return await User.findById(id).select('name handle');
+    },
+
+    followingList: async (id: Number) => {
+        return await User.findById(id).select('following');
     }
 }

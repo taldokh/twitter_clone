@@ -3,9 +3,9 @@ import { fsBucket } from '../../database/grid_fs/fs';
 
 export const postDal = {
 
-    homeWall: async (id: number) => {
+    homeWall: async (id: number, followedUsers: number[]) => {
         return await Post.aggregate()
-            .match({ userId: { $not: { $eq: id } } })
+            .match({ userId: { $in: followedUsers } })
             .project({
                 userId: 1,
                 content: 1,

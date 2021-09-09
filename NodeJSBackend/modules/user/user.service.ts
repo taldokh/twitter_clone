@@ -16,5 +16,9 @@ export const userService = {
 
     postHeader: async (id: Number) => {
         return await userDal.postHeader(id);
+    },
+
+    followingList: async (id: Number) => {
+        return await userDal.followingList(id);
     }
 }
