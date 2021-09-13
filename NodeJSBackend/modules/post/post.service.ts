@@ -4,13 +4,14 @@ import { userService } from '../user/user.service';
 export const postService = {
 
     homewall: async (id: string) => {
-        const postIds = (await userService.followingUsersPostsIds(id));
-        postIds.push(...(await userService.postsIds(id)));
-        return await postDal.homewall(postIds);
+        const postsIds = (await userService.followingUsersPostsIds(id));
+        postsIds.push(...(await userService.postsIds(id)));
+        return await postDal.homewall(postsIds);
     },
 
     profilePage: async (id: string) => {
-        return await postDal.profilePage(parseInt(id));
+        const postsIds = (await userService.postsIds(id));
+        return await postDal.profilePage(postsIds);
     },
 
     postImage: async (id: string) => {

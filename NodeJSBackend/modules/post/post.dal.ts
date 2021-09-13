@@ -15,9 +15,9 @@ export const postDal = {
             });
     },
 
-    profilePage: async (id: number) => {
+    profilePage: async (postsIDs: number[]) => {
         return await Post.aggregate()
-            .match({ userId: { $eq: id } })
+            .match({ '_id': { $in: postsIDs } })
             .project({
                 userId: 1,
                 content: 1,
