@@ -7,13 +7,17 @@ export const userDal = {
         return await User.findById(id, { 'following': 1, '_id': 0 });
     },
 
-    postsIdsOfFollowingUsers: async (id: number) => {
+    followingUsersPostsIds: async (id: number) => {
         return await User.aggregate([
             { $match: { '_id': { $in: (await userDal.followingList(id)).following } } },
             { $unwind: "$posts" },
             { $group: { _id: null, posts: { $push: "$posts" } } },
             { $project: { _id: 0, posts: "$posts" } }
         ]);
+    },
+
+    postsIds: async (id: number) => {
+        return await User.findById(id, { 'posts': 1, '_id': 0 });
     },
 
     profilePageDetails: async (id: number) => {

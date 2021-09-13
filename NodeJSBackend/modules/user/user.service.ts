@@ -18,7 +18,11 @@ export const userService = {
         return await userDal.postHeader(parseInt(id));
     },
 
-    postsIdsOfFollowingUsers: async (id: string) => {
-        return (await userDal.postsIdsOfFollowingUsers(parseInt(id)))[0].posts;
+    followingUsersPostsIds: async (id: string) => {
+        return (await userDal.followingUsersPostsIds(parseInt(id)))[0].posts;
+    },
+
+    postsIds: async (id: string) => {
+        return (await userDal.postsIds(parseInt(id))).posts;
     },
 }

@@ -4,7 +4,9 @@ import { userService } from '../user/user.service';
 export const postService = {
 
     homewall: async (id: string) => {
-        return await postDal.homewall(await userService.postsIdsOfFollowingUsers(id));
+        const postIds = (await userService.followingUsersPostsIds(id));
+        postIds.push(...(await userService.postsIds(id)));
+        return await postDal.homewall(postIds);
     },
 
     profilePage: async (id: string) => {
