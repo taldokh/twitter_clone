@@ -3,7 +3,7 @@ import { fsBucket } from '../../database/grid_fs/fs';
 
 export const postDal = {
 
-    homewall: async (postsIDs: number[]) => {
+    homewall: async (postsIDs: number[], userId: number) => {
         return await Post.aggregate()
             .match({ '_id': { $in: postsIDs } })
             .project({
@@ -11,11 +11,12 @@ export const postDal = {
                 content: 1,
                 uploadTime: 1,
                 commentsCount: { $size: "$comments" },
-                likesCount: { $size: "$likes" }
+                likesCount: { $size: "$likes" },
+                didLike: { $in: [userId, "$likes"] }
             });
     },
 
-    profilePage: async (postsIDs: number[]) => {
+    profilePage: async (postsIDs: number[], userId: number) => {
         return await Post.aggregate()
             .match({ '_id': { $in: postsIDs } })
             .project({
@@ -23,7 +24,8 @@ export const postDal = {
                 content: 1,
                 uploadTime: 1,
                 commentsCount: { $size: "$comments" },
-                likesCount: { $size: "$likes" }
+                likesCount: { $size: "$likes" },
+                didLike: { $in: [userId, "$likes"] }
             });
     },
 

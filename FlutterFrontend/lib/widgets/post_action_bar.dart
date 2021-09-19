@@ -4,11 +4,11 @@ import 'package:provider/provider.dart';
 import './../api.dart';
 
 class PostActionBar extends StatefulWidget {
-  final List<int> _likes;
   final int _likesCount;
+  final bool _didLiked;
   final int _postID;
 
-  PostActionBar(this._likes, this._likesCount, this._postID);
+  PostActionBar(this._likesCount, this._didLiked, this._postID);
 
   @override
   _PostActionBarState createState() => _PostActionBarState();
@@ -16,13 +16,13 @@ class PostActionBar extends StatefulWidget {
 
 class _PostActionBarState extends State<PostActionBar> {
   int likesCount;
-  bool isLiked;
+  bool didLiked;
 
   @override
   void initState() {
     super.initState();
     likesCount = widget._likesCount;
-    isLiked = _didUserLiked(context);
+    didLiked = widget._didLiked;
   }
 
   @override
@@ -33,7 +33,7 @@ class _PostActionBarState extends State<PostActionBar> {
           children: [
             GestureDetector(
               onTap: () => setState(() {
-                this.isLiked
+                this.didLiked
                     ? Api.unlike(
                         widget._postID,
                         Provider.of<SessionState>(context, listen: false)
@@ -42,21 +42,16 @@ class _PostActionBarState extends State<PostActionBar> {
                         widget._postID,
                         Provider.of<SessionState>(context, listen: false)
                             .userID);
-                this.isLiked = !this.isLiked;
-                this.isLiked ? likesCount++ : likesCount--;
+                this.didLiked = !this.didLiked;
+                this.didLiked ? likesCount++ : likesCount--;
               }),
               child: Icon(
-                this.isLiked ? Icons.favorite : Icons.favorite_outline,
+                this.didLiked ? Icons.favorite : Icons.favorite_outline,
                 color: Color(0xFF536471),
               ),
             ),
             Text(this.likesCount.toString())
           ],
         ));
-  }
-
-  bool _didUserLiked(BuildContext context) {
-    int userID = Provider.of<SessionState>(context, listen: false).userID;
-    return widget._likes.contains(userID);
   }
 }

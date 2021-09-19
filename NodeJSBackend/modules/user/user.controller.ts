@@ -18,6 +18,14 @@ userController.get('/post_header/:id', async (req: any, res: any) => {
     res.json(await userService.postHeader(req.params.id));
 });
 
+userController.get('/drawer_details/:id', async (req: any, res: any) => {
+    res.json(await userService.drawerDetails(req.params.id));
+});
+
+userController.get('/autenticate/:handle/:password', async (req: any, res: any) => {
+    res.json(await userService.autenticate(req.params.handle, req.params.password));
+});
+
 userController.get('*', (req: any, res: any) => {
     res.send('404');
 });

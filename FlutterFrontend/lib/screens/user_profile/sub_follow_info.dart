@@ -5,7 +5,7 @@ class SubFollowInfo extends StatelessWidget {
   static const _Followers = ' Followers';
 
   final bool _followers;
-  final String _count;
+  final int _count;
 
   SubFollowInfo(this._followers, this._count);
 
@@ -17,7 +17,7 @@ class SubFollowInfo extends StatelessWidget {
           style: DefaultTextStyle.of(context).style,
           children: <TextSpan>[
             TextSpan(
-                text: this._count,
+                text: this._count.toString(),
                 style: TextStyle(fontWeight: FontWeight.bold)),
             TextSpan(text: this._followers ? _Followers : _Following),
           ],

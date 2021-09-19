@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import '../../api.dart';
 
 class PhotoHeader extends StatelessWidget {
-  final ImageProvider _photo;
+  final int _imageId;
 
-  PhotoHeader(this._photo);
+  PhotoHeader(this._imageId);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class PhotoHeader extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.grey[300],
         image: DecorationImage(
-          image: this._photo,
+          image: Api.userHeaderImage(this._imageId),
           fit: BoxFit.cover,
         ),
         shape: BoxShape.rectangle,

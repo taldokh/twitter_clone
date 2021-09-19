@@ -1,3 +1,4 @@
+import 'package:FlutterFrontend/models/fetched_user.dart';
 import 'package:flutter/material.dart';
 import '../../api.dart';
 import '../../data.dart';
@@ -13,34 +14,41 @@ import './../../widgets/twitter_app_bar.dart';
 
 class UserProfile extends StatelessWidget {
   static const double _AvatarRadius = 38;
-  User _user;
-  UserProfile(int userID) {
-    this._user = Api.fetchUser(userID);
-  }
+  int _userID;
+  UserProfile(this._userID);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          centerTitle: true,
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
-          title: TwitterAppBarIcon()),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TopBanner(this._user.headerPhoto.image, this._user.photo.image),
-            UserInfoBanner(
-                this._user.name,
-                this._user.handle,
-                this._user.joinDate,
-                this._user.followingCount,
-                this._user.followersCount),
-            Column(children: [...Api.fetchProfilePageWallPosts(this._user.id)])
-          ],
-        ),
-      ),
-    );
+    return FutureBuilder(
+        future: Api.fetchUser(this._userID),
+        builder: (context, snapshot) {
+          final FetchedUser fetchedUser = snapshot.data;
+          return Scaffold(
+            appBar: AppBar(
+                centerTitle: true,
+                automaticallyImplyLeading: false,
+                backgroundColor: Colors.white,
+                title: TwitterAppBarIcon()),
+            body: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TopBanner(
+                      fetchedUser.headerImageId, fetchedUser.profileImageId),
+                  UserInfoBanner(
+                      fetchedUser.name,
+                      fetchedUser.handle,
+                      fetchedUser.joinDate,
+                      fetchedUser.followingCount,
+                      fetchedUser.followersCount),
+                  FutureBuilder(
+                      future: Api.fetchProfilePageWallPosts(fetchedUser.id),
+                      builder: (context, snapshot) =>
+                          Column(children: [...snapshot.data]))
+                ],
+              ),
+            ),
+          );
+        });
   }
 }

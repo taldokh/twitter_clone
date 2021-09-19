@@ -21,18 +21,16 @@ export const userDal = {
     },
 
     profilePageDetails: async (id: number) => {
-        return await User.aggregate()
-            .match({ _id: id })
-            .project({
-                name: 1,
-                handle: 1,
-                joinDate: 1,
-                bio: 1,
-                profileImageId: 1,
-                headerImageId: 1,
-                followers: { $size: "$followers" },
-                following: { $size: "$following" }
-            });
+        return await User.findById(id, {
+            name: 1,
+            handle: 1,
+            joinDate: 1,
+            bio: 1,
+            profileImageId: 1,
+            headerImageId: 1,
+            followersCount: { $size: "$followers" },
+            followingCount: { $size: "$following" }
+        });
     },
 
     profileImage: async (id: string) => {
@@ -44,25 +42,17 @@ export const userDal = {
     },
 
     postHeader: async (id: number) => {
-        return await User.findById(id, { 'name': 1, 'handle': 1, '_id': 0 });
+        return await User.findById(id, { 'name': 1, 'handle': 1, '_id': 0 }).lean();
     },
 
-    // followingList: async (id: number) => {
-    //     return await User.findById(id).select('following');
-    // },
+    drawerDetails: async (id: number) => {
+        return await User.findById(id, {
+            'name': 1, 'handle': 1, followersCount: { $size: "$followers" },
+            followingCount: { $size: "$following" }, '_id': 0
+        }).lean();
+    },
 
-    // followingUsersPostsIDs: async (postIDs: number[]) => {
-    //     return await User.findById(id).aggregate()
-    //     .match({ _id: id })
-    //     .project({
-    //         name: 1,
-    //         handle: 1,
-    //         joinDate: 1,
-    //         bio: 1,
-    //         profileImageId: 1,
-    //         headerImageId: 1,
-    //         followers: { $size: "$followers" },
-    //         following: { $size: "$following" }
-    //     });
-    // } 
+    autenticate: async (handle: string, password: string) => {
+        return await User.findOne({ "handle": handle, "password": password }, { '_id': 1 }).lean();
+    },
 }

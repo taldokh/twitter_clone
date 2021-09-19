@@ -25,4 +25,12 @@ export const userService = {
     postsIds: async (id: string) => {
         return (await userDal.postsIds(parseInt(id))).posts;
     },
+
+    drawerDetails: async (id: string) => {
+        return (await userDal.drawerDetails(parseInt(id)));;
+    },
+
+    autenticate: async (handle: string, password: string) => {
+        return (await userDal.autenticate(handle, password));;
+    },
 }

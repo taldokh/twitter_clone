@@ -34,8 +34,8 @@ app.listen(port, () => {
                 handle: "TheRock",
                 email: "therock@gmail.com",
                 bio: "CEO Seven Bucks Companies",
-                profileImageId: 11,
-                headerImageId: 21,
+                profileImageId: 1,
+                headerImageId: 1,
                 followers: [2],
                 following: [2, 3],
                 posts: [3],
@@ -49,8 +49,8 @@ app.listen(port, () => {
                 handle: "JimmyKimmelLive",
                 email: "jimmykimmellive@gmail.com",
                 bio: "The official Twitter for Jimmy Kimmel Live with @JimmyKimmel on ABC! We have fun.",
-                profileImageId: 12,
-                headerImageId: 22,
+                profileImageId: 2,
+                headerImageId: 2,
                 followers: [1, 3],
                 following: [1, 3],
                 posts: [1, 4],
@@ -64,8 +64,8 @@ app.listen(port, () => {
                 handle: "GalGadot",
                 email: "galgadot@gmail.com",
                 bio: "",
-                profileImageId: 13,
-                headerImageId: 23,
+                profileImageId: 3,
+                headerImageId: 3,
                 followers: [1, 2],
                 following: [2],
                 posts: [2, 5],
@@ -88,7 +88,7 @@ app.listen(port, () => {
                 _id: 2,
                 userId: 3,
                 content: new ImageAndTextContent(
-                    'assets/images/post_image31.jpg',
+                    2,
                     'Took some time off and spent it at my favorite place, the sound of the waves, the smell of the ocean, the sand in my toes, those always make me calmer, happier and ready for anything...'),
                 likes: [1, 3],
                 comments: [],
@@ -99,7 +99,7 @@ app.listen(port, () => {
                 _id: 3,
                 userId: 1,
                 content: new ImageAndTextContent(
-                    'assets/images/post_image11.jpg',
+                    1,
                     'It’s time to level up. \nClick to shop the latest collection: http://projectrock.online/tpp\n#ThroughTheWork\n#ProjectRock\n@TheRock'),
                 likes: [3],
                 comments: [],
@@ -118,12 +118,14 @@ app.listen(port, () => {
                 _id: 5,
                 userId: 3,
                 content: new ImageContent(
-                    'assets/images/post_image32.jpg')
+                    3)
                 , likes: [1, 2],
                 comments: [],
                 uploadTime: 'Apr 8'
             },
         ];
+
+        console.log((posts[0].content as TextContent).type);
 
         await User.collection.insertMany(users);
 

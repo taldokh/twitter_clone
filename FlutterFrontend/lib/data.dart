@@ -15,10 +15,8 @@ List<User> users = [
       "TheRock",
       "therock@gmail.com",
       "CEO Seven Bucks Companies",
-      Image.asset("assets/images/photo1.jpeg"),
-      Image.asset(
-        "assets/images/header_photo1.jpg",
-      ),
+      11,
+      21,
       [2],
       [2, 3],
       [3],
@@ -32,10 +30,8 @@ List<User> users = [
       "JimmyKimmelLive",
       "jimmykimmellive@gmail.com",
       "The official Twitter for Jimmy Kimmel Live with @JimmyKimmel on ABC! We have fun. ",
-      Image.asset("assets/images/photo2.jpg"),
-      Image.asset(
-        "assets/images/header_photo2.jpg",
-      ),
+      12,
+      22,
       [1, 3],
       [1, 3],
       [1, 4],
@@ -49,10 +45,8 @@ List<User> users = [
       "GalGadot",
       "galgadot@gmail.com",
       "",
-      Image.asset("assets/images/photo3.jpg"),
-      Image.asset(
-        "assets/images/header_photo3.jpg",
-      ),
+      13,
+      23,
       [1, 2],
       [2],
       [2, 5],
@@ -74,9 +68,7 @@ List<Post> posts = [
       2,
       3,
       ImageAndTextContent(
-          Image.asset(
-            'assets/images/post_image31.jpg',
-          ),
+          31,
           'Took some time off and spent it at my favorite place, the sound of the waves, the smell of the ocean, the sand in my toes, those always make me calmer, happier and ready for anything...'),
       [1, 3],
       List.empty(),
@@ -85,10 +77,7 @@ List<Post> posts = [
       3,
       1,
       ImageAndTextContent(
-          Image.asset(
-            'assets/images/post_image11.jpg',
-            fit: BoxFit.fill,
-          ),
+          11,
           'It’s time to level up. \nClick to shop the latest collection: http://projectrock.online/tpp\n#ThroughTheWork\n#ProjectRock\n@TheRock'),
       [3],
       List.empty(),
@@ -104,9 +93,7 @@ List<Post> posts = [
   Post(
       5,
       3,
-      ImageContent(Image.asset(
-        'assets/images/post_image32.jpg',
-      )),
+      ImageContent(32),
       [1, 2],
       List.empty(),
       'Apr 8'),

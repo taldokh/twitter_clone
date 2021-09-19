@@ -2,4 +2,5 @@
 // allowing a more logical and cleaner code
 export abstract class Content {
 
+    constructor(public type: number){};
 }

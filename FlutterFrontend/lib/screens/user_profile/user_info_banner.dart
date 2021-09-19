@@ -6,8 +6,8 @@ class UserInfoBanner extends StatelessWidget {
   final String _name;
   final String _handle;
   final String _joinDate;
-  final String _followingCount;
-  final String _followersCount;
+  final int _followingCount;
+  final int _followersCount;
 
   UserInfoBanner(this._name, this._handle, this._joinDate, this._followingCount,
       this._followersCount);

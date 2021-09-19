@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import './sub_follow_info.dart';
 
 class FollowInfo extends StatelessWidget {
-  final String _followingCount;
-  final String _followersCount;
+  final int _followingCount;
+  final int _followersCount;
 
   FollowInfo(this._followingCount, this._followersCount);
 

@@ -16,6 +16,7 @@ class Home extends StatelessWidget {
   static const int _HamburgerIconColor = 0xFF1DA1F2;
   @override
   Widget build(BuildContext context) {
+    print('************************building******************************');
     return Scaffold(
         drawer: MainDrawer(),
         appBar: AppBar(
@@ -25,9 +26,10 @@ class Home extends StatelessWidget {
           iconTheme: IconThemeData(color: Color(_HamburgerIconColor)),
         ),
         body: Consumer<SessionState>(
-          builder: (context, session, child) {
-            return ListView(children: [...Api.fetchHomeWallPosts(session.userID)]);
-          },
+          builder: (context, session, child) => FutureBuilder(
+              future: Api.fetchHomeWallPosts(session.userID),
+              builder: (context, snapshot) =>
+                  ListView(children: [...snapshot.data])),
         ));
   }
 }

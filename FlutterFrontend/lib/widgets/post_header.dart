@@ -8,8 +8,6 @@ class PostHeader extends StatelessWidget {
   final String _handle;
   final String _uploadTime;
   final int _userID;
-  static const String _AtSymbol = '@';
-  static const int _HandleCOlor = 0xFF5B7083;
   static const int _UploadTimeCOlor = 0xFF5B7083;
   static const String _UploadTimeSeperator = ' · ';
 
