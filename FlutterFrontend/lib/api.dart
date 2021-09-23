@@ -4,7 +4,6 @@ import 'package:FlutterFrontend/models/fetched_user.dart';
 import 'package:flutter/material.dart';
 import 'package:FlutterFrontend/models/post.dart';
 import 'package:FlutterFrontend/widgets/user_post.dart';
-import './data.dart';
 import 'models/fetched_post.dart';
 import 'models/user.dart';
 import 'package:http/http.dart' as http;
