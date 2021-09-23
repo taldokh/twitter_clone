@@ -12,20 +12,6 @@ import 'package:http/http.dart' as http;
 class Api {
   static const String ApiURL = 'http://10.0.2.2:3000/';
 
-  static like(int postID, int userID) {
-    Post unupdatedPost = posts.firstWhere((post) => post.postId == postID);
-    if (!unupdatedPost.likes.contains(userID)) {
-      unupdatedPost.likes.add(userID);
-    }
-  }
-
-  static unlike(int postID, int userID) {
-    Post unupdatedPost = posts.firstWhere((post) => post.postId == postID);
-    if (unupdatedPost.likes.contains(userID)) {
-      unupdatedPost.likes.remove(userID);
-    }
-  }
-
   static ImageProvider postImage(int postId) {
     return NetworkImage('${ApiURL}post/image/$postId');
   }

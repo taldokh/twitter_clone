@@ -32,19 +32,7 @@ class _PostActionBarState extends State<PostActionBar> {
         child: Row(
           children: [
             GestureDetector(
-              onTap: () => setState(() {
-                this.didLiked
-                    ? Api.unlike(
-                        widget._postID,
-                        Provider.of<SessionState>(context, listen: false)
-                            .userID)
-                    : Api.like(
-                        widget._postID,
-                        Provider.of<SessionState>(context, listen: false)
-                            .userID);
-                this.didLiked = !this.didLiked;
-                this.didLiked ? likesCount++ : likesCount--;
-              }),
+              onTap: () => setState(onLikeTap),
               child: Icon(
                 this.didLiked ? Icons.favorite : Icons.favorite_outline,
                 color: Color(0xFF536471),
@@ -53,5 +41,10 @@ class _PostActionBarState extends State<PostActionBar> {
             Text(this.likesCount.toString())
           ],
         ));
+  }
+
+  onLikeTap() {
+    this.didLiked = !this.didLiked;
+    this.didLiked ? this.likesCount++ : this.likesCount--;
   }
 }
