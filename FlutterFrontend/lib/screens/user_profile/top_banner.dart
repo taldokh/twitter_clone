@@ -5,10 +5,10 @@ import './../../widgets/user_avatar.dart';
 class TopBanner extends StatelessWidget {
   static const double _AvatarRadius = 38;
 
-  final ImageProvider _headerPhoto;
-  final ImageProvider _photo;
+  final int _headerImageId;
+  final int _profileImageId;
 
-  TopBanner(this._headerPhoto, this._photo);
+  TopBanner(this._headerImageId, this._profileImageId);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class TopBanner extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          PhotoHeader(this._headerPhoto),
+          PhotoHeader(this._headerImageId),
           Positioned(
             bottom: -(_AvatarRadius * 1.2),
             left: 11,
@@ -25,7 +25,7 @@ class TopBanner extends StatelessWidget {
               backgroundColor: Colors.white,
               radius: _AvatarRadius + 3,
               child: UserAvatar(
-                this._photo,
+                this._profileImageId,
                 avatarCircleRadius: _AvatarRadius,
               ),
             ),

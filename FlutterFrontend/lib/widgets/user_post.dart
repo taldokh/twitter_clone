@@ -36,7 +36,7 @@ class UserPost extends StatelessWidget {
                 child: GestureDetector(
                     onTap: () =>
                         _onProfileTap(context, this._fetchedPost.userID),
-                    child: UserAvatar(this._fetchedPost.userImage.image))),
+                    child: UserAvatar(this._fetchedPost.userID))),
             Flexible(
               child: Container(
                 child: Column(
@@ -52,7 +52,7 @@ class UserPost extends StatelessWidget {
                     Container(
                         margin: EdgeInsets.only(top: 5),
                         child: this._contentType(this._fetchedPost.content)),
-                    PostActionBar(this._fetchedPost.likes, this._fetchedPost.likesCount, this._fetchedPost.postID)
+                    PostActionBar(this._fetchedPost.likesCount, this._fetchedPost.didLike, this._fetchedPost.postID)
                   ],
                 ),
               ),
@@ -69,14 +69,14 @@ class UserPost extends StatelessWidget {
 
   // returns a widget based on the post content type.
 // by comparing the runtimetype of the content object with the exact content classes
-  Widget _contentType(Content content) {
+  Widget _contentType(Object content) {
     Widget contentWidget;
     if (content.runtimeType == TextContent) {
       TextContent textContent = content;
       contentWidget = PostText(textContent.text);
     } else if (content.runtimeType == ImageContent) {
       ImageContent imageContent = content;
-      contentWidget = PostImage(imageContent.image.image);
+      contentWidget = PostImage(imageContent.image);
     } else if (content.runtimeType == ImageAndTextContent) {
       ImageAndTextContent imageAndTextContent = content;
       contentWidget = Column(
@@ -85,7 +85,7 @@ class UserPost extends StatelessWidget {
           Container(
               margin: EdgeInsets.only(bottom: 5),
               child: PostText(imageAndTextContent.text)),
-          PostImage(imageAndTextContent.image.image)
+          PostImage(imageAndTextContent.image)
         ],
       );
     } else {}

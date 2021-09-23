@@ -8,8 +8,8 @@ class User {
   final String _handle;
   final String _email;
   final String _bio;
-  final Image _photo;
-  final Image _headerPhoto;
+  final int _profileImageId;
+  final int _headerImageId;
   final List<int> _followers;
   final List<int> _following;
   final List<int> _posts;
@@ -24,8 +24,8 @@ class User {
       this._handle,
       this._email,
       this._bio,
-      this._photo,
-      this._headerPhoto,
+      this._profileImageId,
+      this._headerImageId,
       this._followers,
       this._following,
       this._posts,
@@ -45,9 +45,9 @@ class User {
 
   String get bio => this._bio;
 
-  Image get photo => this._photo;
+  int get profileImageId => this._profileImageId;
 
-  Image get headerPhoto => this._headerPhoto;
+  int get headerImageId => this._headerImageId;
 
   List<int> get followers => this._followers;
 

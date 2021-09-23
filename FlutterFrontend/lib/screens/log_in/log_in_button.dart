@@ -22,9 +22,9 @@ class LogInButton extends StatelessWidget {
                   )),
                   splashFactory: NoSplash.splashFactory),
               onPressed: form.isFormValid
-                  ? () {
-                      session.logIn(
-                          Api.autenticate(form.userField, form.passwordField));
+                  ? () async {
+                      session.logIn(await Api.autenticate(
+                          form.userField, form.passwordField));
                       Navigator.pushReplacementNamed(context, HomeRoute);
                     }
                   : null,

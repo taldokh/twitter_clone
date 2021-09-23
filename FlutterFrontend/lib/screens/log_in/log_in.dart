@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './../../navigation/routes.dart';
 import './../../models/session_state.dart';
-import './../../data.dart';
 import 'package:keyboard_attachable/keyboard_attachable.dart';
 
 class LogIn extends StatelessWidget {

@@ -1,25 +1,25 @@
 import { postDal } from './post.dal';
-
+import { userService } from '../user/user.service';
 
 export const postService = {
 
-    homeWall: async (id: string) => {
-        return await postDal.homeWall(parseInt(id));
+    homewall: async (id: string) => {
+        const postsIds = (await userService.followingUsersPostsIds(id));
+        postsIds.push(...(await userService.postsIds(id)));
+        return await Promise.all((await postDal.homewall(postsIds, parseInt(id))).map(postService.mergePostWithHeaderDetails));
     },
 
     profilePage: async (id: string) => {
-        return await postDal.profilePage(parseInt(id));
+        const postsIds = (await userService.postsIds(id));
+        return await Promise.all((await postDal.profilePage(postsIds, parseInt(id))).map(postService.mergePostWithHeaderDetails));
     },
 
-    postImage: async (id: string) => {
-        return await postDal.postImage(id);
-    },
+    mergePostWithHeaderDetails: async (post: any) => ({ ...post, ...(await userService.postHeader(post.userId)) }),
 
-    like: async (userID: string, postID: string) => {
-        return await postDal.like(parseInt(userID), parseInt(postID));
-    },
+    postImage: async (id: string) => await postDal.postImage(id),
 
-    unlike: async (userID: string, postID: string) => {
-        return await postDal.unlike(parseInt(userID), parseInt(postID));
-    },
+    like: async (userID: string, postID: string) => await postDal.like(parseInt(userID), parseInt(postID)),
+
+    unlike: async (userID: string, postID: string) => await postDal.unlike(parseInt(userID), parseInt(postID))
+
 }

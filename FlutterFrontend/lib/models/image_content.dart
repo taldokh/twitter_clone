@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 
 // a content object type that based on a image
 class ImageContent extends Content{
-  final Image _image;
+  final int _image;
 
   ImageContent(this._image);
 
-  Image get image => this._image;
+  int get image => this._image;
 }

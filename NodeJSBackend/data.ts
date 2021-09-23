@@ -64,7 +64,7 @@ new Post(
     2,
     3,
     new ImageAndTextContent(
-        'assets/images/post_image31.jpg',
+        2,
         'Took some time off and spent it at my favorite place, the sound of the waves, the smell of the ocean, the sand in my toes, those always make me calmer, happier and ready for anything...'),
     [1, 3],
     [],
@@ -73,7 +73,7 @@ new Post(
     3,
     1,
     new ImageAndTextContent(
-        'assets/images/post_image11.jpg',
+        1,
         'It’s time to level up. \nClick to shop the latest collection: http://projectrock.online/tpp\n#ThroughTheWork\n#ProjectRock\n@TheRock'),
     [3],
     [],
@@ -90,7 +90,7 @@ new Post(
     5,
     3,
     new ImageContent(
-        'assets/images/post_image32.jpg'
+        3
     ),
     [1, 2],
     [],
