@@ -8,13 +8,13 @@ import { ImageContent } from './classes/image_content'
 const fs = require('fs');
 const express = require('express');
 const mongoose = require('mongoose');
-const uri = 'mongodb://localhost:27017/twitter';
+const uri = 'mongodb://twitter_mongodb:27017/twitter';
 const app = express();
 const port = 3000;
 
 app.get('/', (_req: any, res: any) => {
     //res.send('hello world');
-    fsBucket.openDownloadStreamByName('22').pipe(res);
+    res.send('Welcome');
 });
 
 app.use('/post', postController);
