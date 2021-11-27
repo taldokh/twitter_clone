@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { postController, userController } from "./modules/modules.index";
 import { User } from './database/models/user.model';
 import { Post } from './database/models/post.model';
@@ -8,9 +9,10 @@ import { ImageContent } from './classes/image_content'
 const fs = require('fs');
 const express = require('express');
 const mongoose = require('mongoose');
-const uri = 'mongodb://twitter_mongodb:27017/twitter';
+const mongoServer = process.env.mongoServer || 'localhost';
+const uri = `mongodb://${mongoServer}:27017/twitter`
 const app = express();
-const port = 3000;
+const port = process.env.port || 3000;
 
 app.get('/', (_req: any, res: any) => {
     res.send('hello');
@@ -22,6 +24,7 @@ app.use('/user', userController);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
+    console.log(uri);
     mongoose.connect(uri, { useNewUrlParser: true }, async function (err: any, db: any) {
         await mongoose.connection.db.dropDatabase();
         initFSBucket(mongoose.connection.db);
