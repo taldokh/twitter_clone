@@ -11,6 +11,6 @@ RUN npm install --only=prod
 
 COPY . .
 
-CMD ["node", "start"]
+CMD ["node", "build/app.js"]
 
 
