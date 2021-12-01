@@ -1,4 +1,3 @@
-require('dotenv').config();
 import { postController, userController } from "./modules/modules.index";
 import { User } from './database/models/user.model';
 import { Post } from './database/models/post.model';
