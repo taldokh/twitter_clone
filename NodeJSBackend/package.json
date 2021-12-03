@@ -17,8 +17,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:build": "tsc -w",
-    "start:run": "nodemon -r dotenv/config -L build/app.js",
+    "start:typescript_watch": "tsc -w",
+    "start:nodemon": "nodemon -r dotenv/config -L build/app.js",
     "start": "concurrently npm:start:*"
   },
   "author": "",
