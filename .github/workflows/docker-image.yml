@@ -17,6 +17,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    - name: install node v12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - name: npm install
+      working-directory: ./NodeJSBackend
+      run: npm install
+    - name: tsc
+      working-directory: ./NodeJSBackend
+      run: tsc
+    
     - name: Build the Docker image
       run: docker build ./NodeJSBackend --file ./NodeJSBackend/Dockerfile --tag twittercontainerregistry.azurecr.io/nodejsbackend_backend
       
