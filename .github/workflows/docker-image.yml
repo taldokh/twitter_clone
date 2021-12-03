@@ -22,6 +22,7 @@ jobs:
       with:
         node-version: 12
     - name: npm install
+      working-directory: ./NodeJSBackend
       run: npm install
     - name: tsc
       uses: icrawl/action-tsc@v1
